@@ -9,6 +9,6 @@ public class Rocket extends WarcraftDecorator{
 
     @Override
     public int getPoint() {
-        return Addable.ROCKET.getPoint() +warcraft.getPoint();
+        return Addable.ROCKET.getPoint() + getWarcraft().getPoint();
     }
 }

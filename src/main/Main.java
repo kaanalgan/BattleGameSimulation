@@ -7,7 +7,11 @@ public class Main {
         System.out.println(plane1.getPoint());
         plane1 = new Rocket(plane1);
         System.out.println(plane1.getPoint());
-        plane1 = new Torpedo(plane1);
+        try {
+            plane1 = new Torpedo(plane1);
+        } catch (IllegalWarcraftTypeException e) {
+            e.printStackTrace();
+        }
         System.out.println(plane1.getPoint());
 
     }

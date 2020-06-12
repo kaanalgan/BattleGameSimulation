@@ -2,9 +2,27 @@ package main;
 
 public abstract class WarcraftDecorator extends AbstractWarcraft{
 
-    Warcraft warcraft;
+    private Warcraft warcraft;
+    private Class ogType;
 
     public WarcraftDecorator(Warcraft warcraft) {
+        if (warcraft instanceof Plane){
+            ogType = Plane.class;
+        }
+        else if (warcraft instanceof Ship){
+            ogType = Ship.class;
+        }
+        else if(warcraft instanceof WarcraftDecorator){
+            ogType = ((WarcraftDecorator)warcraft).getOgType();
+        }
         this.warcraft = warcraft;
+    }
+
+    public Class getOgType() {
+        return ogType;
+    }
+
+    public Warcraft getWarcraft() {
+        return warcraft;
     }
 }
