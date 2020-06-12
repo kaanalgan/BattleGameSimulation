@@ -3,9 +3,9 @@ package main;
 public class Plane extends AbstractWarcraft {
 
     private Engine engine;
-    private PlaneType type;
+    private WarcraftType type;
 
-    public Plane(PlaneType planeType, Engine engine){
+    public Plane(PlaneType planeType, Engine engine) {
         super();
         setPlaneType(planeType);
         setEngine(engine);
@@ -16,12 +16,15 @@ public class Plane extends AbstractWarcraft {
         return type.getPoint() + engine.getPoint();
     }
 
+    public WarcraftType getType() {
+        return type;
+    }
 
-    private void setPlaneType(PlaneType planeType){
+    private void setPlaneType(PlaneType planeType) {
         this.type = planeType;
     }
 
-    private void setEngine(Engine engine){
+    private void setEngine(Engine engine) {
         this.engine = engine;
     }
 

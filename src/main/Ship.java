@@ -1,9 +1,9 @@
 package main;
 
-public class Ship extends AbstractWarcraft{
-    ShipType type;
+public class Ship extends AbstractWarcraft {
+    WarcraftType type;
 
-    public Ship(ShipType type){
+    public Ship(ShipType type) {
         super();
         setShipType(type);
     }
@@ -13,8 +13,11 @@ public class Ship extends AbstractWarcraft{
         return type.getPoint();
     }
 
+    public WarcraftType getType() {
+        return type;
+    }
 
-    private void setShipType(ShipType shipType){
+    private void setShipType(ShipType shipType) {
         this.type = shipType;
     }
 }
