@@ -4,12 +4,13 @@ public class Ship extends AbstractWarcraft{
     ShipType type;
 
     public Ship(ShipType type){
+        super();
         setShipType(type);
     }
 
     @Override
     public int getPoint() {
-        return 0;
+        return type.getPoint();
     }
 
 

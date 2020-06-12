@@ -15,4 +15,8 @@ public enum Addable {
         this.minPoint = minPoint;
         this.maxPoint = maxPoint;
     }
+
+    public int getPoint(){
+        return maxPoint;
+    }
 }

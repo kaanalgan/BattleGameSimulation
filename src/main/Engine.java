@@ -12,4 +12,7 @@ public enum Engine {
         this.maxPoint = maxPoint;
     }
 
+    public int getPoint() {
+        return maxPoint;
+    }
 }

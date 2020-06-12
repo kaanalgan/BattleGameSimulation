@@ -6,13 +6,14 @@ public class Plane extends AbstractWarcraft {
     private PlaneType type;
 
     public Plane(PlaneType planeType, Engine engine){
+        super();
         setPlaneType(planeType);
         setEngine(engine);
     }
 
     @Override
     public int getPoint() {
-        return 0;
+        return type.getPoint() + engine.getPoint();
     }
 
 

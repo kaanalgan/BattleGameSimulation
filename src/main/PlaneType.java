@@ -12,4 +12,8 @@ public enum PlaneType {
         this.minPoint = minPoint;
         this.maxPoint = maxPoint;
     }
+
+    public int getPoint() {
+        return maxPoint;
+    }
 }
