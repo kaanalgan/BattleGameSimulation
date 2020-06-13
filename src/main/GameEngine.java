@@ -5,7 +5,7 @@ import java.util.List;
 
 public class GameEngine implements IGameEngine {
 
-    Player[] players;
+    private final Player[] players;
 
     GameEngine(int playerNum){
         players = new Player[playerNum];
@@ -45,13 +45,22 @@ public class GameEngine implements IGameEngine {
     }
 
     @Override
-    public void runSimulation() {
+    public GameReport runSimulation() {
+        List<Integer> simulationScores = new ArrayList<>(players.length);
 
+        for (Player player : players) {
+            simulationScores.add(player.simulateAttack());
+        }
+
+        return new GameReport(simulationScores);
+        
     }
 
     @Override
     public void resetItems() {
-
+        for (Player player : players) {
+            player.resetItems();
+        }
     }
 
     private Warcraft createWarcraft(WarcraftType type, Engine engine){

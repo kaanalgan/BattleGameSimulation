@@ -13,7 +13,7 @@ public interface IGameEngine {
 
     public List<Warcraft> getPlayerLoadout(int playerNo);
 
-    public void runSimulation();
+    public GameReport runSimulation();
 
     public void resetItems();
 
