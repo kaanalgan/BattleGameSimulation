@@ -16,6 +16,8 @@ public abstract class AbstractWarcraft implements Warcraft {
         return addables.add(addable);
     }
 
+    public List<Addable> getAddables(){ return this.addables; }
+
     @Override
     public WarcraftType getType() {
         return type;

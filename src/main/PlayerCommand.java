@@ -28,8 +28,12 @@ public class PlayerCommand extends AbstractCommand{
 
     private void initiateCommands(){
         playerSpecificOperations = new CommandContainer(new HashMap<>());
-        ICommand addPartCommand = new AddPartCommand(getGameEngine(), playerNo);
-        playerSpecificOperations.register(1, addPartCommand);
+
+        ICommand addItemCommand = new AddItemCommand(getGameEngine(), playerNo);
+        ICommand addPartCommand = new AddPartCommand(getGameEngine());
+
+        playerSpecificOperations.register(1, addItemCommand);
+        playerSpecificOperations.register(2, addPartCommand);
     }
 
     private void initiateMenuText(){
