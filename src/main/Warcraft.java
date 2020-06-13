@@ -11,4 +11,6 @@ public interface Warcraft {
     public WarcraftType getType();
 
     public List<Addable> getAddables();
+
+    public String toString();
 }

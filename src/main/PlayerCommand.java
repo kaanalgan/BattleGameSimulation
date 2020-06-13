@@ -1,6 +1,7 @@
 package main;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PlayerCommand extends AbstractCommand{
@@ -13,24 +14,33 @@ public class PlayerCommand extends AbstractCommand{
 
     public PlayerCommand(IGameEngine gameEngine, int playerNo, Input inputHandler, IDisplay displayHandler) {
         super(gameEngine);
-        initiateCommands();
-        initiateMenuText();
+        this.playerNo = playerNo;
         this.displayHandler = displayHandler;
         this.inputHandler = inputHandler;
+        initiateCommands();
+        initiateMenuText();
     }
 
     @Override
     public void execute() {
+        List<Warcraft> playersLoadout = getGameEngine().getPlayerLoadout(playerNo);
+        StringBuilder playerLoadoutBuilder = new StringBuilder();
+        int loadoutNumber = 1;
+        for(Warcraft w : playersLoadout){
+            playerLoadoutBuilder.append(loadoutNumber + ". " + w.toString());
+        }
         displayHandler.displayMenu(menuText, "Choose an operation: ");
         int operationId = inputHandler.readInt();
         playerSpecificOperations.execute(operationId);
     }
 
+    public String toString(){ return "Player" + playerNo; }
+
     private void initiateCommands(){
         playerSpecificOperations = new CommandContainer(new HashMap<>());
 
-        ICommand addItemCommand = new AddItemCommand(getGameEngine(), playerNo);
-        ICommand addPartCommand = new AddPartCommand(getGameEngine());
+        ICommand addItemCommand = new AddItemCommand(getGameEngine(), playerNo, displayHandler, inputHandler);
+        ICommand addPartCommand = new AddPartCommand(getGameEngine(),getGameEngine().getPlayerLoadout(playerNo), displayHandler, inputHandler, playerNo);
 
         playerSpecificOperations.register(1, addItemCommand);
         playerSpecificOperations.register(2, addPartCommand);

@@ -29,4 +29,9 @@ public class GameReport {
 
         return maxVal - secMaxVal;
     }
+
+    public String toString(){
+        return " -> Winner is: " + getWinner() + "\n" +
+                " -> Win margin: " + winMargin();
+    }
 }

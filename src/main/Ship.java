@@ -1,5 +1,7 @@
 package main;
 
+import java.util.List;
+
 public class Ship extends AbstractWarcraft {
     WarcraftType type;
 
@@ -17,7 +19,20 @@ public class Ship extends AbstractWarcraft {
         return type;
     }
 
+    @Override
+    public String toString() {
+        List<Addable> addables = getAddables();
+        StringBuilder warcraftStrBuilder = new StringBuilder();
+        warcraftStrBuilder.append(type.toString() + " [" + type.getPoint() + "] " + " (");
+        for(Addable a : addables){
+            warcraftStrBuilder.append(a.toString());
+        }
+        return warcraftStrBuilder.toString();
+    }
+
     private void setShipType(ShipType shipType) {
         this.type = shipType;
     }
+
+
 }

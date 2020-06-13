@@ -1,6 +1,7 @@
 package main;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class BattleGame {
 
@@ -13,12 +14,12 @@ public class BattleGame {
         CommandContainer commandContainer = new CommandContainer(new HashMap<Integer, ICommand>());
 
         //Input and display handlers
-        Input inputHandler = new ConsoleInput();
+        Input inputHandler = new ConsoleInput(new Scanner(System.in));
         IDisplay displayHandler = new ConsoleDisplay();
 
         //Initiate commands
         ICommand resetGameCommand = new ResetCommand(gameEngine);
-        ICommand runSimulationCommand = new RunSimulationCommand(gameEngine);
+        ICommand runSimulationCommand = new RunSimulationCommand(gameEngine, displayHandler);
         ICommand playerOperationsCommand = new PlayerOperationsCommand(gameEngine, inputHandler, displayHandler);
 
         //Add created commands
@@ -29,6 +30,6 @@ public class BattleGame {
 
         //Create game menu and start game
         GameMenu gameMenu = new GameMenu(inputHandler, displayHandler, commandContainer);
-        gameMenu.startGame();
+        while(true) { gameMenu.mainMenu(); }
     }
 }

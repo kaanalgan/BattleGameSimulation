@@ -9,4 +9,5 @@ public abstract class AbstractCommand implements ICommand{
     }
 
     protected IGameEngine getGameEngine(){ return gameEngine; }
+
 }

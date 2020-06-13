@@ -3,19 +3,25 @@ package main;
 import java.util.Scanner;
 
 public class ConsoleInput implements Input{
+
+    private Scanner scanner;
+
+    public ConsoleInput(Scanner scanner){
+        this.scanner = scanner;
+    }
+
     @Override
     public String readString() {
-        Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
-        scanner.close();
-        return userInput;
+        return scanner.nextLine();
     }
 
     @Override
     public int readInt() {
-        Scanner scanner = new Scanner(System.in);
-        int userInput = scanner.nextInt();
+        return scanner.nextInt();
+    }
+
+    @Override
+    public void closeInputStream(){
         scanner.close();
-        return userInput;
     }
 }

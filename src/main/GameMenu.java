@@ -16,18 +16,18 @@ public class GameMenu {
         initiateMenuText();
     }
 
-    public void startGame(){
-        displayHandler.displayMenu(menuText, "Choose a command: ");
+    public void mainMenu(){
+        displayHandler.displayMenu(menuText, "\nChoose a command: ");
         int commandId = inputHandler.readInt();
         commands.execute(commandId);
     }
 
 
     private void initiateMenuText(){
-        StringBuilder menuText = new StringBuilder();
+        StringBuilder menuText = new StringBuilder("\n");
         Map<Integer, ICommand> commandMap = commands.getCommands();
         for(Integer i : commandMap.keySet()){
-            menuText.append(i + "." + commandMap.get(i) + "\n");
+            menuText.append(i + "." + commandMap.get(i).toString() + "\n");
         }
         this.menuText = menuText.toString();
     }

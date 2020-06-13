@@ -1,5 +1,7 @@
 package main;
 
+import java.util.List;
+
 public class Plane extends AbstractWarcraft {
 
     private Engine engine;
@@ -18,6 +20,17 @@ public class Plane extends AbstractWarcraft {
 
     public WarcraftType getType() {
         return type;
+    }
+
+    @Override
+    public String toString() {
+        List<Addable> addables = getAddables();
+        StringBuilder warcraftStrBuilder = new StringBuilder();
+        warcraftStrBuilder.append(type.toString() + " [" + type.getPoint() + "] " + " with " + engine.name() + " [" + engine.getPoint() + "]");
+        for(Addable a : addables){
+            warcraftStrBuilder.append("( " + a.toString() + " ) ");
+        }
+        return warcraftStrBuilder.toString();
     }
 
     private void setPlaneType(PlaneType planeType) {

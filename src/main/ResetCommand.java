@@ -10,4 +10,8 @@ public class ResetCommand extends AbstractCommand{
     public void execute() {
         getGameEngine().resetItems();
     }
+
+    public String toString(){
+        return "Reset Items";
+    }
 }

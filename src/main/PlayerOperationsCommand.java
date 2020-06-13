@@ -6,15 +6,16 @@ import java.util.Map;
 public class PlayerOperationsCommand extends AbstractCommand{
 
     private Input inputHandler;
-    private CommandContainer commandContainer;
     private IDisplay displayHandler;
     private String playerMenuText;
     private CommandContainer commands;
 
     public PlayerOperationsCommand(IGameEngine gameEngine, Input inputHandler, IDisplay displayHandler) {
         super(gameEngine);
-        initiatePlayerMenu();
+        this.inputHandler = inputHandler;
+        this.displayHandler = displayHandler;
         initiateCommands();
+        initiatePlayerMenu();
     }
 
     @Override
@@ -22,7 +23,10 @@ public class PlayerOperationsCommand extends AbstractCommand{
 
         //TODO: Let the user choose which player to customize
         //TODO: Get the input as to which player object to customize
-        displayHandler.displayMenu(playerMenuText, "Choose ar command: ");
+        if(displayHandler == null){
+            System.out.println("displayHandler is null");
+        }
+        displayHandler.displayMenu(playerMenuText, "Choose a command: ");
         int operationId = inputHandler.readInt();
         commands.execute(operationId);
 
@@ -39,6 +43,11 @@ public class PlayerOperationsCommand extends AbstractCommand{
         //TODO: If show loadout is chosen -> display loadout and go back to main menu?How?
         /*TODO: */
 
+    }
+
+
+    public String toString(){
+        return "Player Operations";
     }
 
 
@@ -59,7 +68,7 @@ public class PlayerOperationsCommand extends AbstractCommand{
         StringBuilder availableCommands = new StringBuilder();
         Map<Integer, ICommand> commandMap = commands.getCommands();
         for(Integer i : commandMap.keySet()){
-            availableCommands.append(i + ". " + commandMap.get(i) + "\n");
+            availableCommands.append(i + ". " + commandMap.get(i).toString() + "\n");
         }
         playerMenuText = availableCommands.toString();
     }

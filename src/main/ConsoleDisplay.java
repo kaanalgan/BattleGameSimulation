@@ -40,6 +40,9 @@ public class ConsoleDisplay implements IDisplay{
 
     @Override
     public void displayGameReport(String simulationResults) {
-
+        System.out.println("\n\n\n*******************");
+        System.out.println("Simulation Results");
+        System.out.println("*******************");
+        System.out.println(simulationResults);
     }
 }

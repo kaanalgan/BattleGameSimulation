@@ -19,4 +19,8 @@ public enum Addable {
     public int getPoint(){
         return maxPoint;
     }
+
+    public String toString() {
+        return name() + " [" + getPoint() + "] ";
+    }
 }
