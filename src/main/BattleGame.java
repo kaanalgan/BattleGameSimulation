@@ -7,7 +7,7 @@ public class BattleGame {
     public void start(){
 
         //Game engine
-        IGameEngine gameEngine = new GameEngine();
+        IGameEngine gameEngine = new GameEngine(2);
 
         CommandContainer commandContainer = new CommandContainer(new HashMap<Integer, ICommand>());
 
