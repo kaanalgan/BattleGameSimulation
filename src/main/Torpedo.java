@@ -1,5 +1,7 @@
 package main;
 
+import exceptions.IllegalWarcraftTypeException;
+
 public class Torpedo extends WarcraftDecorator{
 
     public Torpedo(Warcraft warcraft) throws IllegalWarcraftTypeException {

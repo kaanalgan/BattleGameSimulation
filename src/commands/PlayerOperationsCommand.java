@@ -1,4 +1,8 @@
-package main;
+package commands;
+
+import main.IDisplay;
+import main.IGameEngine;
+import main.Input;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,26 +27,14 @@ public class PlayerOperationsCommand extends AbstractCommand{
 
         //TODO: Let the user choose which player to customize
         //TODO: Get the input as to which player object to customize
-        if(displayHandler == null){
-            System.out.println("displayHandler is null");
-        }
         displayHandler.displayMenu(playerMenuText, "Choose a command: ");
         int operationId = inputHandler.readInt();
-        commands.execute(operationId);
+        try{
+            commands.execute(operationId);
 
-
-
-        //TODO: Display another menu in which there will be: add or show parts options
-        //TODO: Get the input as to which operation to perform
-
-
-
-        //TODO: Maybe additional commands are required? (AddPartCommand, RemovePartCommand)
-        //TODO: Another CommandContainer object as attribute for this class?
-
-        //TODO: If show loadout is chosen -> display loadout and go back to main menu?How?
-        /*TODO: */
-
+        }catch(UnsupportedOperationException e){
+            e.printStackTrace();
+        }
     }
 
 

@@ -1,6 +1,6 @@
-package main;
+package commands;
 
-import java.util.List;
+import main.*;
 
 public class AddItemCommand extends AbstractCommand{
 

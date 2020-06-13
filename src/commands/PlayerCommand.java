@@ -1,4 +1,9 @@
-package main;
+package commands;
+
+import main.IDisplay;
+import main.IGameEngine;
+import main.Input;
+import main.Warcraft;
 
 import java.util.HashMap;
 import java.util.List;

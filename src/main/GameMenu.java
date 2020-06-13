@@ -1,5 +1,8 @@
 package main;
 
+import commands.CommandContainer;
+import commands.ICommand;
+
 import java.util.Map;
 
 public class GameMenu {
@@ -19,7 +22,13 @@ public class GameMenu {
     public void mainMenu(){
         displayHandler.displayMenu(menuText, "\nChoose a command: ");
         int commandId = inputHandler.readInt();
-        commands.execute(commandId);
+
+        try{
+            commands.execute(commandId);
+
+        }catch(UnsupportedOperationException e){
+            e.printStackTrace();
+        }
     }
 
 

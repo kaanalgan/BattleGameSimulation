@@ -1,5 +1,7 @@
 package main;
 
+import commands.*;
+
 import java.util.HashMap;
 import java.util.Scanner;
 

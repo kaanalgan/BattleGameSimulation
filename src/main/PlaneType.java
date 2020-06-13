@@ -16,4 +16,14 @@ public enum PlaneType implements WarcraftType {
     public int getPoint() {
         return maxPoint;
     }
+
+    @Override
+    public int getMaxPoint() {
+        return maxPoint;
+    }
+
+    @Override
+    public int getMinPoint() {
+        return minPoint;
+    }
 }

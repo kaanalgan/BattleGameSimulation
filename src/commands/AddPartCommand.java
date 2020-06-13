@@ -1,4 +1,7 @@
-package main;
+package commands;
+
+import exceptions.IllegalWarcraftTypeException;
+import main.*;
 
 import java.util.List;
 
@@ -23,9 +26,9 @@ public class AddPartCommand extends AbstractCommand {
     private void initiateMenuText(){
         StringBuilder warcrafts = new StringBuilder();
         int menuItemIndex = 1;
-        System.out.println("length: " + this.warcrafts.size());
         for(Warcraft w : this.warcrafts){
-            warcrafts.append(menuItemIndex + ". " + w.toString());
+            warcrafts.append(menuItemIndex + ". " + w.toString() + "\n");
+            menuItemIndex++;
         }
         menuItems = warcrafts.toString();
     }
@@ -40,6 +43,7 @@ public class AddPartCommand extends AbstractCommand {
         int id = inputHandler.readInt();
 
         Warcraft selectedWarcraft = warcrafts.get(id-1);
+        System.out.println("selected warcraft : " + selectedWarcraft.getType());
         int partId;
         Addable partToAdd;
 
@@ -70,7 +74,8 @@ public class AddPartCommand extends AbstractCommand {
             }
 
 
-        }else if(selectedWarcraft.getClass() == Plane.class){
+        }else if(selectedWarcraft.getClass() == Plane.class ||
+                selectedWarcraft.getType() instanceof PlaneType){
 
             menuItems = "1. Rocket\n" +
                         "2. Missile\n" +

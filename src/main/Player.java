@@ -1,5 +1,7 @@
 package main;
 
+import exceptions.IllegalWarcraftTypeException;
+
 import java.util.ArrayList;
 import java.util.List;
 

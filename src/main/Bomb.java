@@ -1,5 +1,7 @@
 package main;
 
+import exceptions.IllegalWarcraftTypeException;
+
 public class Bomb extends WarcraftDecorator{
 
     public Bomb(Warcraft warcraft) throws IllegalWarcraftTypeException {

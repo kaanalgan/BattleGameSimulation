@@ -1,5 +1,7 @@
 package main;
 
+import exceptions.IllegalWarcraftTypeException;
+
 public class Missile extends WarcraftDecorator{
 
     public Missile(Warcraft warcraft) throws IllegalWarcraftTypeException {

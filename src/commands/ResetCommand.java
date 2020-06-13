@@ -1,4 +1,6 @@
-package main;
+package commands;
+
+import main.IGameEngine;
 
 public class ResetCommand extends AbstractCommand{
 

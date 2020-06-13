@@ -1,6 +1,5 @@
-package main;
+package commands;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class CommandContainer {
@@ -19,6 +18,9 @@ public class CommandContainer {
     }
 
     public void execute(Integer operationId){
+        if(!commandMap.keySet().contains(operationId)){
+            throw new UnsupportedOperationException("Given operation id is not supported.");
+        }
         ICommand command = commandMap.get(operationId);
         command.execute();
     }

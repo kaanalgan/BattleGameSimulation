@@ -17,6 +17,11 @@ public abstract class WarcraftDecorator extends AbstractWarcraft {
         this.warcraft = warcraft;
     }
 
+    
+    public String toString(){
+        return warcraft.toString();
+    }
+    
     public Class getOgType() {
         return ogType;
     }

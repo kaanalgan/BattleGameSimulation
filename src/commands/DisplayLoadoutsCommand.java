@@ -1,6 +1,8 @@
-package main;
+package commands;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
+import main.IDisplay;
+import main.IGameEngine;
+import main.Warcraft;
 
 import java.util.List;
 
@@ -20,15 +22,20 @@ public class DisplayLoadoutsCommand extends AbstractCommand{
         List<Warcraft> player2Loadouts = getGameEngine().getPlayerLoadout(2);
 
         StringBuilder player1Loadout = new StringBuilder();
+        int itemIndex = 1;
 
         for(Warcraft w : player1Loadouts){
-            player1Loadout.append(w.toString());
+            player1Loadout.append(itemIndex + ". " + w.toString() + "\n");
+            itemIndex++;
         }
 
+
         StringBuilder player2Loadout = new StringBuilder();
+        itemIndex = 1;
 
         for(Warcraft w : player2Loadouts){
-            player2Loadout.append(w.toString());
+            player2Loadout.append(itemIndex + ". " + w.toString() + "\n");
+            itemIndex++;
         }
 
         displayHandler.displayLoadouts(player1Loadout.toString(), player2Loadout.toString());

@@ -1,6 +1,8 @@
 package main;
 
 
+import exceptions.IllegalWarcraftTypeException;
+
 import java.util.List;
 
 public interface IGameEngine {

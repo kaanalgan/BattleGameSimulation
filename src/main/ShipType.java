@@ -13,6 +13,10 @@ public enum ShipType implements WarcraftType {
         this.maxPoint = maxPoint;
     }
 
+    public int getMinPoint() { return minPoint; }
+
+    public int getMaxPoint() { return maxPoint; }
+
     public int getPoint() {
         return maxPoint;
     }

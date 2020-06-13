@@ -1,5 +1,7 @@
 package main;
 
+import exceptions.IllegalWarcraftTypeException;
+
 public class MachineGun extends WarcraftDecorator{
 
     public MachineGun(Warcraft warcraft) throws IllegalWarcraftTypeException {

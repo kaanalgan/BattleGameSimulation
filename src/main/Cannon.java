@@ -1,5 +1,7 @@
 package main;
 
+import exceptions.IllegalWarcraftTypeException;
+
 public class Cannon extends WarcraftDecorator{
 
     public Cannon(Warcraft warcraft) throws IllegalWarcraftTypeException {

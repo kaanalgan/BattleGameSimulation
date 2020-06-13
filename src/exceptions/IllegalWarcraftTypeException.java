@@ -1,4 +1,4 @@
-package main;
+package exceptions;
 
 public class IllegalWarcraftTypeException extends Exception {
     public IllegalWarcraftTypeException(String errorMessage) {
