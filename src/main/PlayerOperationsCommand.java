@@ -44,7 +44,7 @@ public class PlayerOperationsCommand extends AbstractCommand{
 
     private void initiateCommands(){
         commands = new CommandContainer(new HashMap<>());
-        
+
         ICommand displayLoadoutsCommand = new DisplayLoadoutsCommand(getGameEngine(), displayHandler);
         ICommand player1Command = new PlayerCommand(getGameEngine(), 1, inputHandler, displayHandler);
         ICommand player2Command = new PlayerCommand(getGameEngine(), 2, inputHandler, displayHandler);

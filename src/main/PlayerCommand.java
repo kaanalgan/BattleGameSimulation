@@ -14,6 +14,7 @@ public class PlayerCommand extends AbstractCommand{
     public PlayerCommand(IGameEngine gameEngine, int playerNo, Input inputHandler, IDisplay displayHandler) {
         super(gameEngine);
         initiateCommands();
+        initiateMenuText();
         this.displayHandler = displayHandler;
         this.inputHandler = inputHandler;
     }
