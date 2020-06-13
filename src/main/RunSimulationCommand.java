@@ -7,7 +7,5 @@ public class RunSimulationCommand extends AbstractCommand{
     }
 
     @Override
-    public void execute() {
-        getGameEngine().runSimulation();
-    }
+    public void execute() { getGameEngine().runSimulation(); }
 }

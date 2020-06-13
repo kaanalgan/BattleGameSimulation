@@ -9,20 +9,26 @@ public class BattleGame {
         //Game engine
         IGameEngine gameEngine = new GameEngine(2);
 
+        //Available commands' container
         CommandContainer commandContainer = new CommandContainer(new HashMap<Integer, ICommand>());
 
-        //Create commands
+        //Input and display handlers
+        Input inputHandler = new ConsoleInput();
+        IDisplay displayHandler = new ConsoleDisplay();
+
+        //Initiate commands
         ICommand resetGameCommand = new ResetCommand(gameEngine);
         ICommand runSimulationCommand = new RunSimulationCommand(gameEngine);
-        ICommand playerOperationsCommand = new PlayerOperationsCommand(gameEngine);
+        ICommand playerOperationsCommand = new PlayerOperationsCommand(gameEngine, inputHandler, displayHandler);
 
         //Add created commands
-        commandContainer.register(3, resetGameCommand);
-        commandContainer.register(2, runSimulationCommand);
         commandContainer.register(1, playerOperationsCommand);
+        commandContainer.register(2, runSimulationCommand);
+        commandContainer.register(3, resetGameCommand);
+
 
         //Create game menu and start game
-        GameMenu gameMenu = new GameMenu( new ConsoleInput(), new ConsoleDisplay(), gameEngine ,commandContainer);
+        GameMenu gameMenu = new GameMenu(inputHandler, displayHandler, commandContainer);
         gameMenu.startGame();
     }
 }

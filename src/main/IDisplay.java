@@ -2,11 +2,13 @@ package main;
 
 public interface IDisplay {
 
-    void displayMenu();
+    void displayMenu(String menuText, String requestMessage);
 
-    void displayLoadout();
+    void displayLoadouts(String player1Loadout, String player2Loadout);
 
-    void displayOperations();
+    //TODO: ???
+    void displayAddPart(String parts);
 
-    void displayPlayers();
+
+    void displayGameReport(String simulationResults);
 }

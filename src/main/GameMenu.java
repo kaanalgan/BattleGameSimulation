@@ -1,27 +1,41 @@
 package main;
 
+import java.util.Map;
+
 public class GameMenu {
 
     private Input inputHandler;
     private IDisplay displayHandler;
-    private IGameEngine gameEngine;
     private CommandContainer commands;
+    private String menuText;
 
-    public GameMenu(Input inputHandler, IDisplay displayHandler, IGameEngine gameEngine, CommandContainer commands){
+    public GameMenu(Input inputHandler, IDisplay displayHandler, CommandContainer commands){
         setDisplayHandler(displayHandler);
-        setGameEngine(gameEngine);
         setInputHandler(inputHandler);
         setCommands(commands);
+        initiateMenuText();
     }
 
     public void startGame(){
-        displayHandler.displayMenu();
-        int command = inputHandler.readInt();
-        commands.execute(command);
+        displayHandler.displayMenu(menuText, "Choose a command: ");
+        int commandId = inputHandler.readInt();
+        commands.execute(commandId);
     }
 
 
+    private void initiateMenuText(){
+        StringBuilder menuText = new StringBuilder();
+        Map<Integer, ICommand> commandMap = commands.getCommands();
+        for(Integer i : commandMap.keySet()){
+            menuText.append(i + "." + commandMap.get(i) + "\n");
+        }
+        this.menuText = menuText.toString();
+    }
+
     private void setCommands(CommandContainer commands){
+        if(commands == null){
+            throw new IllegalArgumentException("Command container cannot be null.");
+        }
         this.commands = commands;
     }
 
@@ -39,9 +53,4 @@ public class GameMenu {
         this.displayHandler = displayHandler;
     }
 
-    private void setGameEngine(IGameEngine gameEngine){
-        if(gameEngine == null){
-            throw new IllegalArgumentException("Game engine argument cannot be null");
-        }
-    }
 }
