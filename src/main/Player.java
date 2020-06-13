@@ -10,7 +10,7 @@ public class Player {
         this.warcrafts = new ArrayList<>();
     }
 
-    public boolean addWarcrafts(Warcraft warcraft) {
+    public boolean addWarcraft(Warcraft warcraft) {
         if (warcrafts.size() < 5) {
             if (warcraft instanceof Plane) {
                 return addPlane(warcraft);
@@ -95,11 +95,30 @@ public class Player {
         return count;
     }
 
+    public void addPartToWarcraft(int warcraftNo, Addable addable) throws IllegalWarcraftTypeException {
+        Warcraft warcraft = warcrafts.get(warcraftNo);
+        switch (addable){
+            case BOMB: warcraft = new Bomb(warcraft);
+                                  break;
+            case CANNON: warcraft = new Cannon(warcraft);
+                                    break;
+            case ROCKET: warcraft = new Rocket(warcraft);
+                                    break;
+            case TORPEDO: warcraft = new Torpedo(warcraft);
+                                     break;
+            case MISSILE: warcraft = new Missile(warcraft);
+                                     break;
+            case MACHINE_GUN: warcraft = new MachineGun(warcraft);
+                                         break;
+            default: warcraft = new Rocket(warcraft);
+                     break;
+        }
+        warcrafts.set(warcraftNo, warcraft);
+    }
+
+
     public List<Warcraft> getWarcrafts() {
         return warcrafts;
     }
 
-    public void setWarcrafts(List<Warcraft> warcrafts) {
-        this.warcrafts = warcrafts;
-    }
 }

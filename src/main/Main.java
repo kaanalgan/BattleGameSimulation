@@ -26,10 +26,10 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println(player1.addWarcrafts(ship1));
-        System.out.println(player1.addWarcrafts(ship2));
-        System.out.println(player1.addWarcrafts(ship3));
-        System.out.println(player1.addWarcrafts(ship4));
+        System.out.println(player1.addWarcraft(ship1));
+        System.out.println(player1.addWarcraft(ship2));
+        System.out.println(player1.addWarcraft(ship3));
+        System.out.println(player1.addWarcraft(ship4));
 
         PlaneFactory multirolePlaneFactory = new MultirolePlaneFactory();
         PlaneFactory fighterPlaneFactory = new FighterPlaneFactory();
@@ -53,10 +53,10 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println(player1.addWarcrafts(plane1));
-        System.out.println(player1.addWarcrafts(plane2));
-        System.out.println(player1.addWarcrafts(plane3));
-        System.out.println(player1.addWarcrafts(plane4));
+        System.out.println(player1.addWarcraft(plane1));
+        System.out.println(player1.addWarcraft(plane2));
+        System.out.println(player1.addWarcraft(plane3));
+        System.out.println(player1.addWarcraft(plane4));
 
 
     }
