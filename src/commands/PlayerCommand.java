@@ -16,19 +16,6 @@ public class PlayerCommand extends AbstractMenuCommand{
         initiateMenu();
     }
 
-    /*@Override
-    public void execute() {
-        getDisplayHandler().displayMenu(getMenuText(), "Choose an operation: ");
-        int operationId = getInputHandler().readInt();
-
-        if(operationId == 3){
-            return;
-        }
-
-        getCommandContainer().execute(operationId);
-
-    }*/
-
     public String toString(){ return "Player" + playerNo; }
 
     protected void initiateCommands(){

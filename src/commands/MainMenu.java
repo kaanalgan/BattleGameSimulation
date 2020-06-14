@@ -31,20 +31,7 @@ public class MainMenu extends AbstractMenuCommand {
         getCommandContainer().register(3, resetGameCommand);
         getCommandContainer().register(4, exitGameCommand);
     }
-
-
-    /*@Override
-    public void execute() {
-        getDisplayHandler().displayMenu(getMenuText(), "Choose a command: ");
-        int commandId = getInputHandler().readInt();
-
-        try{
-            getCommandContainer().execute(commandId);
-
-        }catch(UnsupportedOperationException e){
-            e.printStackTrace();
-        }
-    }*/
+    
 
     @Override
     public String toString() {

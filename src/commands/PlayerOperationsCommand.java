@@ -13,29 +13,6 @@ public class PlayerOperationsCommand extends AbstractMenuCommand{
         initiateMenu();
     }
 
-   /* @Override
-    public void execute() {
-
-        //TODO: Let the user choose which player to customize
-        //TODO: Get the input as to which player object to customize
-        int operationId;
-        while(true){
-            getDisplayHandler().displayMenu(getMenuText(), "Choose a command: ");
-            operationId = getInputHandler().readInt();
-
-            if(operationId == 4){
-                break;
-            }
-
-            try{
-                getCommandContainer().execute(operationId);
-
-            }catch(UnsupportedOperationException e){
-                e.printStackTrace();
-            }
-        }
-
-    }*/
 
 
     public String toString(){
