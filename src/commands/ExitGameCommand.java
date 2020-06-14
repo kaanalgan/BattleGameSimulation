@@ -1,7 +1,7 @@
 package commands;
 
-import main.IDisplay;
-import main.IGameEngine;
+import io.IDisplay;
+import gameengine.IGameEngine;
 
 public class ExitGameCommand extends AbstractCommand{
 

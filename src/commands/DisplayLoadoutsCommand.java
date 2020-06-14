@@ -1,8 +1,8 @@
 package commands;
 
-import main.IDisplay;
-import main.IGameEngine;
-import main.Warcraft;
+import io.IDisplay;
+import gameengine.IGameEngine;
+import warcrafts.Warcraft;
 
 import java.util.List;
 

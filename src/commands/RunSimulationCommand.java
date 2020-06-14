@@ -1,8 +1,8 @@
 package commands;
 
-import main.GameReport;
-import main.IDisplay;
-import main.IGameEngine;
+import utilities.GameReport;
+import io.IDisplay;
+import gameengine.IGameEngine;
 
 public class RunSimulationCommand extends AbstractCommand{
 

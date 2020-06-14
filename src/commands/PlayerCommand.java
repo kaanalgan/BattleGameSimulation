@@ -1,13 +1,10 @@
 package commands;
 
-import main.IDisplay;
-import main.IGameEngine;
-import main.Input;
-import main.Warcraft;
+import io.IDisplay;
+import gameengine.IGameEngine;
+import io.Input;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class PlayerCommand extends AbstractMenuCommand{
 

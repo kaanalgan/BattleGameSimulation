@@ -1,6 +1,13 @@
 package commands;
 
-import main.*;
+import gameengine.IGameEngine;
+import io.IDisplay;
+import io.Input;
+import warcrafts.*;
+import warcrafts.plane.Engine;
+import warcrafts.plane.PlaneType;
+import warcrafts.ship.Ship;
+import warcrafts.ship.ShipType;
 
 public class AddItemCommand extends AbstractCommand{
 

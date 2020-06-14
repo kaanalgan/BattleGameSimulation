@@ -1,11 +1,10 @@
 package commands;
 
-import main.IDisplay;
-import main.IGameEngine;
-import main.Input;
+import io.IDisplay;
+import gameengine.IGameEngine;
+import io.Input;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class PlayerOperationsCommand extends AbstractMenuCommand{
 

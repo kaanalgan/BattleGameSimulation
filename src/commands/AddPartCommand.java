@@ -1,7 +1,15 @@
 package commands;
 
+import addables.Addable;
 import exceptions.IllegalWarcraftTypeException;
-import main.*;
+import gameengine.IGameEngine;
+import io.IDisplay;
+import io.Input;
+import warcrafts.*;
+import warcrafts.plane.Plane;
+import warcrafts.plane.PlaneType;
+import warcrafts.ship.Ship;
+import warcrafts.ship.ShipType;
 
 import java.util.List;
 

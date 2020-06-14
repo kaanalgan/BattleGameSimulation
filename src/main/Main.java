@@ -1,6 +1,18 @@
 package main;
 
+import addables.Missile;
+import addables.Rocket;
+import addables.Torpedo;
 import exceptions.IllegalWarcraftTypeException;
+import players.Player;
+import warcrafts.*;
+import warcrafts.plane.Engine;
+import warcrafts.plane.FighterPlaneFactory;
+import warcrafts.plane.MultirolePlaneFactory;
+import warcrafts.plane.PlaneFactory;
+import warcrafts.ship.DestroyerShipFactory;
+import warcrafts.ship.FrigateShipFactory;
+import warcrafts.ship.ShipFactory;
 
 public class Main {
     public static void main(String[] args) {

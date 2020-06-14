@@ -1,6 +1,6 @@
 package commands;
 
-import main.IGameEngine;
+import gameengine.IGameEngine;
 
 public abstract class AbstractCommand implements ICommand{
 

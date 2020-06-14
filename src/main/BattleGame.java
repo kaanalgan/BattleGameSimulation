@@ -1,5 +1,13 @@
 package main;
 
+import commands.MainMenu;
+import gameengine.GameEngine;
+import gameengine.IGameEngine;
+import io.ConsoleDisplay;
+import io.ConsoleInput;
+import io.IDisplay;
+import io.Input;
+
 import java.util.Scanner;
 
 public class BattleGame {
@@ -14,8 +22,8 @@ public class BattleGame {
         IDisplay displayHandler = new ConsoleDisplay();
 
 
-        //Create game menu and start game
-        GameMenu mainMenu = new GameMenu(gameEngine, inputHandler, displayHandler);
+        //Create main menu and start game
+        MainMenu mainMenu = new MainMenu(gameEngine, inputHandler, displayHandler);
         while(true) { mainMenu.execute(); }
     }
 }
