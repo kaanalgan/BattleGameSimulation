@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.UnknownWarcraftTypeException;
 import gameengine.IGameEngine;
 import io.IDisplay;
 import io.Input;
@@ -75,7 +76,11 @@ public class AddItemCommand extends AbstractCommand{
                         engine = Engine.PULSEJET;
                         break;
                 }
-                getGameEngine().addWarcraft(playerNo, warcraftType, engine);
+                try{
+                    getGameEngine().addWarcraft(playerNo, warcraftType, engine);
+                }catch(UnknownWarcraftTypeException e){
+                    e.printStackTrace();
+                }
                 break;
 
             case 2:
@@ -100,7 +105,11 @@ public class AddItemCommand extends AbstractCommand{
                         break;
                 }
                 newWarcraft = new Ship((ShipType)warcraftType);
-                getGameEngine().addWarcraft(playerNo, warcraftType, null);
+                try {
+                    getGameEngine().addWarcraft(playerNo, warcraftType, null);
+                } catch (UnknownWarcraftTypeException e) {
+                    e.printStackTrace();
+                }
                 break;
 
             default:

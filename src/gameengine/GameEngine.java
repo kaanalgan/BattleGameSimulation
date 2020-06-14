@@ -2,6 +2,7 @@ package gameengine;
 
 import addables.Addable;
 import exceptions.IllegalWarcraftTypeException;
+import exceptions.UnknownWarcraftTypeException;
 import players.Player;
 import utilities.GameReport;
 import warcrafts.*;
@@ -15,7 +16,7 @@ public class GameEngine implements IGameEngine {
 
     private final Player[] players;
 
-    GameEngine(int playerNum){
+    public GameEngine(int playerNum){
         players = new Player[playerNum];
 
         for(int i=0; i<playerNum; i++){
@@ -24,7 +25,7 @@ public class GameEngine implements IGameEngine {
     }
 
     @Override
-    public boolean addWarcraft(int playerNo, WarcraftType warcraftType) {
+    public boolean addWarcraft(int playerNo, WarcraftType warcraftType) throws UnknownWarcraftTypeException {
         Player player = players[playerNo];
         Warcraft warcraft = createWarcraft(warcraftType, null);
         player.addWarcraft(warcraft);
@@ -32,7 +33,7 @@ public class GameEngine implements IGameEngine {
     }
 
     @Override
-    public boolean addWarcraft(int playerNo, WarcraftType warcraftType, Engine engine) {
+    public boolean addWarcraft(int playerNo, WarcraftType warcraftType, Engine engine) throws UnknownWarcraftTypeException {
         Player player = players[playerNo-1];
         Warcraft warcraft = createWarcraft(warcraftType, engine);
         player.addWarcraft(warcraft);
@@ -71,7 +72,7 @@ public class GameEngine implements IGameEngine {
         }
     }
 
-    private Warcraft createWarcraft(WarcraftType type, Engine engine){
+    private Warcraft createWarcraft(WarcraftType type, Engine engine) throws UnknownWarcraftTypeException {
         if(type.getClass() == PlaneType.class){
             PlaneType planeType = (PlaneType) type;
             PlaneFactory planeFactory;
@@ -103,7 +104,7 @@ public class GameEngine implements IGameEngine {
             }
             return shipFactory.createShip();
          }else{
-            return null;
+            throw new UnknownWarcraftTypeException("Warcraft could not be created, type is unknown.");
         }
     }
 }
