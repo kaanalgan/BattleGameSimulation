@@ -50,6 +50,7 @@ public class Player {
                 break;
         }
         warcrafts.set(warcraftNo, warcraft);
+        System.out.println(warcraft.toString());
     }
 
     public int simulateAttack(){
@@ -129,9 +130,6 @@ public class Player {
         }
         return count;
     }
-
-
-
 
     public List<Warcraft> getWarcrafts() {
         return warcrafts;

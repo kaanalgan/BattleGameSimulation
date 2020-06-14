@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Random;
+
 public enum PlaneType implements WarcraftType {
     FIGHTER(10, 12),
     BOMBER(15, 20),
@@ -14,7 +16,8 @@ public enum PlaneType implements WarcraftType {
     }
 
     public int getPoint() {
-        return maxPoint;
+        Random r = new Random();
+        return r.nextInt(maxPoint+1-minPoint) + minPoint;
     }
 
     @Override

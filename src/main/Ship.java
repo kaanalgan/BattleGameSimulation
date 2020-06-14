@@ -23,9 +23,9 @@ public class Ship extends AbstractWarcraft {
     public String toString() {
         List<Addable> addables = getAddables();
         StringBuilder warcraftStrBuilder = new StringBuilder();
-        warcraftStrBuilder.append(type.toString() + " [" + type.getMinPoint() + " , " + type.getMaxPoint() + "] ");
+        warcraftStrBuilder.append(type.toString() + " [" + type.getMinPoint() + ", " + type.getMaxPoint() + "] ");
         for(Addable a : addables){
-            warcraftStrBuilder.append(a.toString());
+            warcraftStrBuilder.append("(" + a.toString() + ") ");
         }
         return warcraftStrBuilder.toString();
     }

@@ -20,7 +20,7 @@ public class GameMenu {
     }
 
     public void mainMenu(){
-        displayHandler.displayMenu(menuText, "\nChoose a command: ");
+        displayHandler.displayMenu(menuText, "Choose a command: ");
         int commandId = inputHandler.readInt();
 
         try{
@@ -33,10 +33,15 @@ public class GameMenu {
 
 
     private void initiateMenuText(){
-        StringBuilder menuText = new StringBuilder("\n");
+        StringBuilder menuText = new StringBuilder();
         Map<Integer, ICommand> commandMap = commands.getCommands();
+        int count = 0;
         for(Integer i : commandMap.keySet()){
-            menuText.append(i + "." + commandMap.get(i).toString() + "\n");
+            menuText.append(i + "." + commandMap.get(i).toString());
+            count++;
+            if(count < commandMap.keySet().size()){
+                menuText.append("\n");
+            }
         }
         this.menuText = menuText.toString();
     }

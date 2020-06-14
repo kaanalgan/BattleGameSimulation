@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Random;
+
 public enum ShipType implements WarcraftType {
     CRUISER(15, 30),
     DESTROYER(20, 40),
@@ -18,6 +20,7 @@ public enum ShipType implements WarcraftType {
     public int getMaxPoint() { return maxPoint; }
 
     public int getPoint() {
-        return maxPoint;
+        Random r = new Random();
+        return r.nextInt(maxPoint+1-minPoint) + minPoint;
     }
 }

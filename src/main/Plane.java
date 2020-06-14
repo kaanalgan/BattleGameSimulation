@@ -26,9 +26,9 @@ public class Plane extends AbstractWarcraft {
     public String toString() {
         List<Addable> addables = getAddables();
         StringBuilder warcraftStrBuilder = new StringBuilder();
-        warcraftStrBuilder.append(type.toString() + " [" + type.getPoint() + "] " + " with " + engine.name() + " [" + engine.getPoint() + "]");
+        warcraftStrBuilder.append(type.toString() + " [" + type.getMinPoint()+ ", " + type.getMaxPoint() + "] " + " with " + engine.name() + " [" + engine.getPoint() + "]");
         for(Addable a : addables){
-            warcraftStrBuilder.append("( " + a.toString() + " ) ");
+            warcraftStrBuilder.append("(" + a.toString() + ") ");
         }
         return warcraftStrBuilder.toString();
     }

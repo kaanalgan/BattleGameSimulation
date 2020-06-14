@@ -4,13 +4,11 @@ public class ConsoleDisplay implements IDisplay{
 
     @Override
     public void displayMenu(String menuText, String requestMessage) {
-        StringBuilder barrierText = new StringBuilder("*");
-        for(int i=0; i<=menuText.length(); i++){
-            barrierText.append("*");
-        }
-        System.out.println(barrierText.toString());
+
+        String barrierText = "**********************************";
+        System.out.println(barrierText);
         System.out.println(menuText);
-        System.out.println(barrierText.toString());
+        System.out.println(barrierText);
         System.out.print(requestMessage);
     }
 
@@ -22,13 +20,13 @@ public class ConsoleDisplay implements IDisplay{
         System.out.println("Player1's loadout");
         System.out.println("-----------------");
 
-        System.out.println(player1Loadout + "\n\n\n");
+        System.out.println(player1Loadout + "\n");
 
         System.out.println("-----------------");
         System.out.println("Player2's loadout");
         System.out.println("-----------------");
 
-        System.out.println(player2Loadout + "\n\n\n");
+        System.out.println(player2Loadout);
 
 
     }
@@ -40,7 +38,7 @@ public class ConsoleDisplay implements IDisplay{
 
     @Override
     public void displayGameReport(String simulationResults) {
-        System.out.println("\n\n\n*******************");
+        System.out.println("\n*******************");
         System.out.println("Simulation Results");
         System.out.println("*******************");
         System.out.println(simulationResults);

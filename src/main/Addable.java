@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Random;
+
 public enum Addable {
     ROCKET(2,8),
     MISSILE(3,6),
@@ -17,10 +19,11 @@ public enum Addable {
     }
 
     public int getPoint(){
-        return maxPoint;
+        Random r = new Random();
+        return r.nextInt(maxPoint+1-minPoint) + minPoint;
     }
 
     public String toString() {
-        return name() + " [" + getPoint() + "] ";
+        return name() + " [" + minPoint + ", " + maxPoint + "]";
     }
 }

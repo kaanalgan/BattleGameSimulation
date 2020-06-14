@@ -17,7 +17,7 @@ public class GameReport {
 
     public int getWinner(){
         int maxVal = Collections.max(playerScores);
-        return playerScores.indexOf(maxVal);
+        return playerScores.indexOf(maxVal) + 1;
     }
 
     public int winMargin(){
@@ -31,7 +31,7 @@ public class GameReport {
     }
 
     public String toString(){
-        return " -> Winner is: " + getWinner() + "\n" +
+        return " -> Winner is: Player " + getWinner() + "\n" +
                 " -> Win margin: " + winMargin();
     }
 }

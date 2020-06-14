@@ -52,7 +52,7 @@ public class AddPartCommand extends AbstractCommand {
                         "2. Torpedo\n" +
                         "3. Cannon";
 
-            displayHandler.displayMenu(menuItems, "Choose a part to add");
+            displayHandler.displayMenu(menuItems, "Choose a part to add: ");
             partId = inputHandler.readInt();
             switch (partId){
                 case 1:
@@ -82,7 +82,7 @@ public class AddPartCommand extends AbstractCommand {
                         "3. Machine gun\n" +
                         "4. Bomb";
 
-            displayHandler.displayMenu(menuItems, "Choose a part to add");
+            displayHandler.displayMenu(menuItems, "Choose a part to add: ");
             partId = inputHandler.readInt();
 
             switch (partId){

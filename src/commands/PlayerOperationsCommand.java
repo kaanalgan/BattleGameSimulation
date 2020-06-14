@@ -59,8 +59,13 @@ public class PlayerOperationsCommand extends AbstractCommand{
     private void initiatePlayerMenu(){
         StringBuilder availableCommands = new StringBuilder();
         Map<Integer, ICommand> commandMap = commands.getCommands();
+        int count = 0;
         for(Integer i : commandMap.keySet()){
-            availableCommands.append(i + ". " + commandMap.get(i).toString() + "\n");
+            availableCommands.append(i + ". " + commandMap.get(i).toString());
+            count++;
+            if(count < commandMap.keySet().size()){
+                availableCommands.append("\n");
+            }
         }
         playerMenuText = availableCommands.toString();
     }
