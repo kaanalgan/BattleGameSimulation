@@ -27,6 +27,7 @@ public class Plane extends AbstractWarcraft {
         List<Addable> addables = getAddables();
         StringBuilder warcraftStrBuilder = new StringBuilder();
         warcraftStrBuilder.append(type.toString() + " [" + type.getMinPoint()+ ", " + type.getMaxPoint() + "] " + " with " + engine.name() + " [" + engine.getPoint() + "]");
+        System.out.println("addables' length: " + addables.size());
         for(Addable a : addables){
             warcraftStrBuilder.append("(" + a.toString() + ") ");
         }

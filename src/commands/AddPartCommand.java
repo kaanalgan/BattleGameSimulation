@@ -47,7 +47,8 @@ public class AddPartCommand extends AbstractCommand {
         int partId;
         Addable partToAdd;
 
-        if(selectedWarcraft.getClass() == Ship.class){
+        if(selectedWarcraft.getClass() == Ship.class ||
+            selectedWarcraft.getType() instanceof ShipType){
             menuItems = "1. Rocket\n" +
                         "2. Torpedo\n" +
                         "3. Cannon";
@@ -112,8 +113,11 @@ public class AddPartCommand extends AbstractCommand {
             return;
         }
 
+        System.out.println("part to add: " + partToAdd);
+        System.out.println("warcraft no: " + (id-1));
+
         try {
-            getGameEngine().addPart(playerNo, id-1, partToAdd);
+            getGameEngine().addPart(playerNo, id, partToAdd);
         } catch (IllegalWarcraftTypeException e) {
             e.printStackTrace();
         }

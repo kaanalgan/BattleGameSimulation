@@ -49,8 +49,8 @@ public class Player {
             default: warcraft = new Rocket(warcraft);
                 break;
         }
-        warcrafts.set(warcraftNo, warcraft);
-        System.out.println(warcraft.toString());
+        System.out.println("warcraft no: " + warcraftNo);
+        warcraft.getAddables().add(addable);
     }
 
     public int simulateAttack(){

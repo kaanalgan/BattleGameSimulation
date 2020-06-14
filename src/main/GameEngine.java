@@ -36,7 +36,7 @@ public class GameEngine implements IGameEngine {
     @Override
     public boolean addPart(int playerNo, int warcraftNo, Addable part) throws IllegalWarcraftTypeException {
         Player player = players[playerNo-1];
-        player.addPartToWarcraft(warcraftNo, part);
+        player.addPartToWarcraft(warcraftNo-1, part);
         return false;
     }
 
