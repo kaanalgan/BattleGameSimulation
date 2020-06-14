@@ -28,7 +28,7 @@ public class GameEngine implements IGameEngine {
         Player player = players[playerNo];
         Warcraft warcraft = createWarcraft(warcraftType, null);
         player.addWarcraft(warcraft);
-        return false;
+        return player.getWarcrafts().contains(warcraft);
     }
 
     @Override
@@ -36,14 +36,14 @@ public class GameEngine implements IGameEngine {
         Player player = players[playerNo-1];
         Warcraft warcraft = createWarcraft(warcraftType, engine);
         player.addWarcraft(warcraft);
-        return false;
+        return player.getWarcrafts().contains(warcraft);
     }
 
     @Override
     public boolean addPart(int playerNo, int warcraftNo, Addable part) throws IllegalWarcraftTypeException {
         Player player = players[playerNo-1];
         player.addPartToWarcraft(warcraftNo-1, part);
-        return false;
+        return player.getWarcrafts().get(warcraftNo-1).getAddables().contains(part);
     }
 
     @Override

@@ -6,6 +6,11 @@ import io.Input;
 
 import java.util.Map;
 
+
+/* AbstractMenuCommand.java
+ * Any command class that will serve as a menu in the program may extend this since it provides most of the needed functionality, attributes.
+ * Any client that will inherit from this, will have to use initiateMenu() method in their constructor method, otherwise menu text will be null.
+ * initiateCommands() method has to be implemented in order for initiateMenu() to properly work. */
 public abstract class AbstractMenuCommand extends AbstractCommand{
 
     private IDisplay displayHandler;
