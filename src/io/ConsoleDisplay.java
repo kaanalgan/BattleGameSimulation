@@ -63,4 +63,8 @@ public class ConsoleDisplay implements IDisplay{
             System.out.println("Draw!!");
         }
     }
+
+    public void displayErrorMessage(String message){
+        System.err.println(message);
+    }
 }

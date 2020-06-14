@@ -86,6 +86,11 @@ public class AddPartCommand extends AbstractCommand {
         displayHandler.displayMenu(menuItems, "Choose a warcraft: ");
         int id = inputHandler.readInt();
 
+        if(id-1 >= warcrafts.size()){
+            displayHandler.displayErrorMessage("No item with given number");
+            return;
+        }
+
         Warcraft selectedWarcraft = warcrafts.get(id-1);
         System.out.println("selected warcraft : " + selectedWarcraft.getType());
         int partId;

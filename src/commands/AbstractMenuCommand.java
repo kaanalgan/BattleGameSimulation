@@ -36,7 +36,7 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
             try{
                 getCommandContainer().execute(operationId);
             }catch (UnsupportedOperationException e){
-                e.printStackTrace();
+                displayHandler.displayErrorMessage("Given operation id is not an option, try again with a different number.");
             }
         }while(!(operationId == commandContainer.getCommands().size()+1));
     }

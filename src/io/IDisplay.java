@@ -9,4 +9,6 @@ public interface IDisplay {
     void displayWarning(String warningText);
 
     void displayGameReport(int player1Score, int player2Score);
+
+    void displayErrorMessage(String errorMessage);
 }
