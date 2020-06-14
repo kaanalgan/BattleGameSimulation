@@ -28,23 +28,20 @@ public class GameEngine implements IGameEngine {
     public boolean addWarcraft(int playerNo, WarcraftType warcraftType) throws UnknownWarcraftTypeException {
         Player player = players[playerNo];
         Warcraft warcraft = createWarcraft(warcraftType, null);
-        player.addWarcraft(warcraft);
-        return player.getWarcrafts().contains(warcraft);
+        return player.addWarcraft(warcraft);
     }
 
     @Override
     public boolean addWarcraft(int playerNo, WarcraftType warcraftType, Engine engine) throws UnknownWarcraftTypeException {
         Player player = players[playerNo-1];
         Warcraft warcraft = createWarcraft(warcraftType, engine);
-        player.addWarcraft(warcraft);
-        return player.getWarcrafts().contains(warcraft);
+        return player.addWarcraft(warcraft);
     }
 
     @Override
     public boolean addPart(int playerNo, int warcraftNo, Addable part) throws IllegalWarcraftTypeException {
         Player player = players[playerNo-1];
-        player.addPartToWarcraft(warcraftNo-1, part);
-        return player.getWarcrafts().get(warcraftNo-1).getAddables().contains(part);
+        return player.addPartToWarcraft(warcraftNo-1, part);
     }
 
     @Override

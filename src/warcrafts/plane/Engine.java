@@ -1,5 +1,7 @@
 package warcrafts.plane;
 
+import java.util.Random;
+
 public enum Engine {
     PULSEJET(2,4),
     TURBOJET(5,7);
@@ -12,7 +14,16 @@ public enum Engine {
         this.maxPoint = maxPoint;
     }
 
-    public int getPoint() {
+    public int getMinPoint() {
+        return minPoint;
+    }
+
+    public int getMaxPoint() {
         return maxPoint;
+    }
+
+    public int getPoint() {
+        Random r = new Random();
+        return r.nextInt(maxPoint+1-minPoint) + minPoint;
     }
 }

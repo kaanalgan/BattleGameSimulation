@@ -36,7 +36,7 @@ public class Player {
         return false;
     }
 
-    public void addPartToWarcraft(int warcraftNo, Addable addable) throws IllegalWarcraftTypeException {
+    public boolean addPartToWarcraft(int warcraftNo, Addable addable) throws IllegalWarcraftTypeException {
         Warcraft warcraft = warcrafts.get(warcraftNo);
         switch (addable){
             case BOMB: warcraft = new Bomb(warcraft);
@@ -51,11 +51,10 @@ public class Player {
                 break;
             case MACHINE_GUN: warcraft = new MachineGun(warcraft);
                 break;
-            default: warcraft = new Rocket(warcraft);
-                break;
+            default: return false;
         }
         warcrafts.set(warcraftNo, warcraft);
-        System.out.println(warcraft.toString());
+        return true;
     }
 
     public int simulateAttack(){
