@@ -1,5 +1,7 @@
 package main;
 
+import java.util.List;
+
 public abstract class WarcraftDecorator extends AbstractWarcraft {
 
     private Warcraft warcraft;
@@ -16,7 +18,6 @@ public abstract class WarcraftDecorator extends AbstractWarcraft {
         }
         this.warcraft = warcraft;
     }
-
     
     public String toString(){
         return warcraft.toString();
@@ -34,4 +35,8 @@ public abstract class WarcraftDecorator extends AbstractWarcraft {
         return warcraft.getType();
     }
 
+    @Override
+    public boolean addAddables(Addable addable) {
+        return warcraft.addAddables(addable);
+    }
 }
