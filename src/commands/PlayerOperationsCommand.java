@@ -13,7 +13,7 @@ public class PlayerOperationsCommand extends AbstractMenuCommand{
         initiateMenu();
     }
 
-    @Override
+   /* @Override
     public void execute() {
 
         //TODO: Let the user choose which player to customize
@@ -22,9 +22,11 @@ public class PlayerOperationsCommand extends AbstractMenuCommand{
         while(true){
             getDisplayHandler().displayMenu(getMenuText(), "Choose a command: ");
             operationId = getInputHandler().readInt();
+
             if(operationId == 4){
                 break;
             }
+
             try{
                 getCommandContainer().execute(operationId);
 
@@ -33,7 +35,7 @@ public class PlayerOperationsCommand extends AbstractMenuCommand{
             }
         }
 
-    }
+    }*/
 
 
     public String toString(){
@@ -44,9 +46,9 @@ public class PlayerOperationsCommand extends AbstractMenuCommand{
     protected void initiateCommands(){
         setCommandContainer(new CommandContainer(new HashMap<>()));
 
-        ICommand displayLoadoutsCommand = new DisplayLoadoutsCommand(getGameEngine(), getDisplayHandler());
         ICommand player1Command = new PlayerCommand(getGameEngine(), 1, getInputHandler(), getDisplayHandler());
         ICommand player2Command = new PlayerCommand(getGameEngine(), 2, getInputHandler(), getDisplayHandler());
+        ICommand displayLoadoutsCommand = new DisplayLoadoutsCommand(getGameEngine(), getDisplayHandler());
 
         getCommandContainer().register(1, player1Command);
         getCommandContainer().register(2, player2Command);

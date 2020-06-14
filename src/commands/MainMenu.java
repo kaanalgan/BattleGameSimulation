@@ -33,7 +33,7 @@ public class MainMenu extends AbstractMenuCommand {
     }
 
 
-    @Override
+    /*@Override
     public void execute() {
         getDisplayHandler().displayMenu(getMenuText(), "Choose a command: ");
         int commandId = getInputHandler().readInt();
@@ -44,7 +44,7 @@ public class MainMenu extends AbstractMenuCommand {
         }catch(UnsupportedOperationException e){
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Override
     public String toString() {

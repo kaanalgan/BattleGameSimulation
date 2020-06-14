@@ -5,10 +5,12 @@ public class ConsoleDisplay implements IDisplay{
     @Override
     public void displayMenu(String menuText, String requestMessage) {
 
+        System.out.println("\n");
         String barrierText = "**********************************";
         System.out.println(barrierText);
         System.out.println(menuText);
         System.out.println(barrierText);
+        System.out.println("\n");
         System.out.print(requestMessage);
     }
 
@@ -33,15 +35,15 @@ public class ConsoleDisplay implements IDisplay{
 
     @Override
     public void displayWarning(String warningText) {
-        System.out.println("********************************");
+        System.out.println("\n\n********************************");
         System.out.println(warningText + "!");
-        System.out.println("********************************");
+        System.out.println("********************************\n\n");
     }
 
 
     @Override
     public void displayGameReport(int player1Score, int player2Score) {
-        System.out.println("\n*******************");
+        System.out.println("\n\n*******************");
         System.out.println("Simulation Results");
         System.out.println("*******************");
         System.out.println("Player1's score: " + player1Score + " points");

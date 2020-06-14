@@ -26,7 +26,16 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
 
 
     @Override
-    public abstract void execute();
+    public void execute(){
+        int operationId;
+        do{
+            getDisplayHandler().displayMenu(getMenuText(), "Choose a command: ");
+            operationId = getInputHandler().readInt();
+            if(operationId == commandContainer.getCommands().size()+1)
+                return;
+            getCommandContainer().execute(operationId);
+        }while(!(operationId == commandContainer.getCommands().size()+1));
+    }
 
     @Override
     public abstract String toString();
@@ -50,8 +59,12 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
             menu.append(i + ". " + commandMap.get(i) + "\n");
             count++;
         }
+
+        /* If the caller class is not MainMenu, then add a Main Menu option to its menu text */
         if(getClass() != MainMenu.class){
-            menu.append(count+1 + ". " + "Main Menu");
+            menu.append(count+1 + ". " + "Back");
+        }else{
+            menu.deleteCharAt(menu.lastIndexOf("\n"));
         }
 
         menuText = menu.toString();
