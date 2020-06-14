@@ -50,9 +50,8 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
             menu.append(i + ". " + commandMap.get(i) + "\n");
             count++;
         }
-
         if(getClass() != MainMenu.class){
-            menu.append((count + 1) + ". " + "Main Menu");
+            menu.append(count+1 + ". " + "Main Menu");
         }
 
         menuText = menu.toString();

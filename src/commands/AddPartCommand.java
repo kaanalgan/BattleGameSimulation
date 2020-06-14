@@ -75,6 +75,11 @@ public class AddPartCommand extends AbstractCommand {
     @Override
     public void execute() {
 
+        if(warcrafts.size() == 0){
+            displayHandler.displayWarning("No warcraft to select!");
+            return;
+        }
+
         /* Get the most up-to-date loadout of the player. */
         initiateMenuText();
 
