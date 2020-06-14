@@ -2,6 +2,7 @@ package players;
 
 import addables.*;
 import exceptions.IllegalWarcraftTypeException;
+import exceptions.PartAlreadyExistException;
 import warcrafts.plane.Plane;
 import warcrafts.ship.Ship;
 import warcrafts.Warcraft;
@@ -36,7 +37,7 @@ public class Player {
         return false;
     }
 
-    public boolean addPartToWarcraft(int warcraftNo, Addable addable) throws IllegalWarcraftTypeException {
+    public boolean addPartToWarcraft(int warcraftNo, Addable addable) throws IllegalWarcraftTypeException, PartAlreadyExistException {
         Warcraft warcraft = warcrafts.get(warcraftNo);
         switch (addable){
             case BOMB: warcraft = new Bomb(warcraft);

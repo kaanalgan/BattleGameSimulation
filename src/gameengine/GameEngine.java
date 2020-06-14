@@ -2,6 +2,7 @@ package gameengine;
 
 import addables.Addable;
 import exceptions.IllegalWarcraftTypeException;
+import exceptions.PartAlreadyExistException;
 import exceptions.UnknownWarcraftTypeException;
 import players.Player;
 import utilities.GameReport;
@@ -39,7 +40,7 @@ public class GameEngine implements IGameEngine {
     }
 
     @Override
-    public boolean addPart(int playerNo, int warcraftNo, Addable part) throws IllegalWarcraftTypeException {
+    public boolean addPart(int playerNo, int warcraftNo, Addable part) throws IllegalWarcraftTypeException, PartAlreadyExistException {
         Player player = players[playerNo-1];
         return player.addPartToWarcraft(warcraftNo-1, part);
     }

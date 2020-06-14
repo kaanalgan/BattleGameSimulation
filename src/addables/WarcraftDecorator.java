@@ -1,5 +1,6 @@
 package addables;
 
+import exceptions.PartAlreadyExistException;
 import warcrafts.AbstractWarcraft;
 import warcrafts.plane.Plane;
 import warcrafts.ship.Ship;
@@ -40,7 +41,7 @@ public abstract class WarcraftDecorator extends AbstractWarcraft {
     }
 
     @Override
-    public boolean addAddables(Addable addable) {
+    public boolean addAddables(Addable addable) throws PartAlreadyExistException {
         return warcraft.addAddables(addable);
     }
 }

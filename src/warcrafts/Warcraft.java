@@ -1,6 +1,7 @@
 package warcrafts;
 
 import addables.Addable;
+import exceptions.PartAlreadyExistException;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ public interface Warcraft {
 
     public int getPoint();
 
-    public boolean addAddables(Addable addable);
+    public boolean addAddables(Addable addable) throws PartAlreadyExistException;
 
     public WarcraftType getType();
 
