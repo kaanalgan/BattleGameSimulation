@@ -28,15 +28,16 @@ public class PlayerCommand extends AbstractCommand{
 
     @Override
     public void execute() {
-        List<Warcraft> playersLoadout = getGameEngine().getPlayerLoadout(playerNo);
+        /*List<Warcraft> playersLoadout = getGameEngine().getPlayerLoadout(playerNo);
         StringBuilder playerLoadoutBuilder = new StringBuilder();
         int loadoutNumber = 1;
         for(Warcraft w : playersLoadout){
             playerLoadoutBuilder.append(loadoutNumber + ". " + w.toString());
-        }
+        }*/
         displayHandler.displayMenu(menuText, "Choose an operation: ");
         int operationId = inputHandler.readInt();
         playerSpecificOperations.execute(operationId);
+
     }
 
     public String toString(){ return "Player" + playerNo; }

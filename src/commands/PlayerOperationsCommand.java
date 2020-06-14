@@ -27,14 +27,21 @@ public class PlayerOperationsCommand extends AbstractCommand{
 
         //TODO: Let the user choose which player to customize
         //TODO: Get the input as to which player object to customize
-        displayHandler.displayMenu(playerMenuText, "Choose a command: ");
-        int operationId = inputHandler.readInt();
-        try{
-            commands.execute(operationId);
+        int operationId;
+        while(true){
+            displayHandler.displayMenu(playerMenuText, "Choose a command: ");
+            operationId = inputHandler.readInt();
+            if(operationId == 4){
+                break;
+            }
+            try{
+                commands.execute(operationId);
 
-        }catch(UnsupportedOperationException e){
-            e.printStackTrace();
+            }catch(UnsupportedOperationException e){
+                e.printStackTrace();
+            }
         }
+
     }
 
 
@@ -63,10 +70,9 @@ public class PlayerOperationsCommand extends AbstractCommand{
         for(Integer i : commandMap.keySet()){
             availableCommands.append(i + ". " + commandMap.get(i).toString());
             count++;
-            if(count < commandMap.keySet().size()){
-                availableCommands.append("\n");
-            }
+            availableCommands.append("\n");
         }
+        availableCommands.append((count + 1) + ". Main Menu\n");
         playerMenuText = availableCommands.toString();
     }
 
