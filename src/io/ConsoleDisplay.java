@@ -40,10 +40,25 @@ public class ConsoleDisplay implements IDisplay{
 
 
     @Override
-    public void displayGameReport(String simulationResults) {
+    public void displayGameReport(int player1Score, int player2Score) {
         System.out.println("\n*******************");
         System.out.println("Simulation Results");
         System.out.println("*******************");
-        System.out.println(simulationResults);
+        System.out.println("Player1's score: " + player1Score + " points");
+        System.out.println("Player2's score: " + player2Score + " points");
+
+
+        if(player1Score > player2Score){
+
+            System.out.println("Player1 wins by " + (player1Score - player2Score) + " points");
+
+        }else if(player1Score < player2Score){
+
+            System.out.println("Player2 wins by " + (player2Score - player1Score) + " points");
+
+        }else{
+
+            System.out.println("Draw!!");
+        }
     }
 }

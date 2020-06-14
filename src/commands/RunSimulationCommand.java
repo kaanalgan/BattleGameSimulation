@@ -22,6 +22,6 @@ public class RunSimulationCommand extends AbstractCommand{
     public void execute() {
         //Run the simulation, get the end game report and display it.
         GameReport simulationResults = getGameEngine().runSimulation();
-        displayHandler.displayGameReport(simulationResults.toString());
+        displayHandler.displayGameReport(simulationResults.getPlayerScore(0), simulationResults.getPlayerScore(1));
     }
 }

@@ -8,5 +8,5 @@ public interface IDisplay {
 
     void displayWarning(String warningText);
 
-    void displayGameReport(String simulationResults);
+    void displayGameReport(int player1Score, int player2Score);
 }

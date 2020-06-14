@@ -1,4 +1,4 @@
-package main;
+/*package main;
 
 import addables.Missile;
 import addables.Rocket;
@@ -75,3 +75,4 @@ public class Main {
 
     }
 }
+*/

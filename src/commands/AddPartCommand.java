@@ -2,6 +2,7 @@ package commands;
 
 import addables.Addable;
 import exceptions.IllegalWarcraftTypeException;
+import exceptions.PartAlreadyExistException;
 import gameengine.IGameEngine;
 import io.IDisplay;
 import io.Input;
@@ -156,7 +157,7 @@ public class AddPartCommand extends AbstractCommand {
 
         try {
             getGameEngine().addPart(playerNo, id, partToAdd);
-        } catch (IllegalWarcraftTypeException e) {
+        } catch (IllegalWarcraftTypeException | PartAlreadyExistException e) {
             e.printStackTrace();
         }
     }
