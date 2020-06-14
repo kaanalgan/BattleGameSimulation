@@ -31,9 +31,13 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
         do{
             getDisplayHandler().displayMenu(getMenuText(), "Choose a command: ");
             operationId = getInputHandler().readInt();
-            if(operationId == commandContainer.getCommands().size()+1)
+            if((operationId == commandContainer.getCommands().size()+1) && (getClass() != MainMenu.class))
                 return;
-            getCommandContainer().execute(operationId);
+            try{
+                getCommandContainer().execute(operationId);
+            }catch (UnsupportedOperationException e){
+                e.printStackTrace();
+            }
         }while(!(operationId == commandContainer.getCommands().size()+1));
     }
 

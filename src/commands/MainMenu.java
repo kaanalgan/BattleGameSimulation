@@ -31,7 +31,7 @@ public class MainMenu extends AbstractMenuCommand {
         getCommandContainer().register(3, resetGameCommand);
         getCommandContainer().register(4, exitGameCommand);
     }
-    
+
 
     @Override
     public String toString() {
