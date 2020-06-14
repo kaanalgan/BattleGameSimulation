@@ -7,19 +7,11 @@ import main.Input;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PlayerOperationsCommand extends AbstractCommand{
-
-    private Input inputHandler;
-    private IDisplay displayHandler;
-    private String playerMenuText;
-    private CommandContainer commands;
+public class PlayerOperationsCommand extends AbstractMenuCommand{
 
     public PlayerOperationsCommand(IGameEngine gameEngine, Input inputHandler, IDisplay displayHandler) {
-        super(gameEngine);
-        this.inputHandler = inputHandler;
-        this.displayHandler = displayHandler;
-        initiateCommands();
-        initiatePlayerMenu();
+        super(gameEngine, displayHandler, inputHandler);
+        initiateMenu();
     }
 
     @Override
@@ -29,13 +21,13 @@ public class PlayerOperationsCommand extends AbstractCommand{
         //TODO: Get the input as to which player object to customize
         int operationId;
         while(true){
-            displayHandler.displayMenu(playerMenuText, "Choose a command: ");
-            operationId = inputHandler.readInt();
+            getDisplayHandler().displayMenu(getMenuText(), "Choose a command: ");
+            operationId = getInputHandler().readInt();
             if(operationId == 4){
                 break;
             }
             try{
-                commands.execute(operationId);
+                getCommandContainer().execute(operationId);
 
             }catch(UnsupportedOperationException e){
                 e.printStackTrace();
@@ -50,31 +42,16 @@ public class PlayerOperationsCommand extends AbstractCommand{
     }
 
 
-    private void initiateCommands(){
-        commands = new CommandContainer(new HashMap<>());
+    protected void initiateCommands(){
+        setCommandContainer(new CommandContainer(new HashMap<>()));
 
-        ICommand displayLoadoutsCommand = new DisplayLoadoutsCommand(getGameEngine(), displayHandler);
-        ICommand player1Command = new PlayerCommand(getGameEngine(), 1, inputHandler, displayHandler);
-        ICommand player2Command = new PlayerCommand(getGameEngine(), 2, inputHandler, displayHandler);
+        ICommand displayLoadoutsCommand = new DisplayLoadoutsCommand(getGameEngine(), getDisplayHandler());
+        ICommand player1Command = new PlayerCommand(getGameEngine(), 1, getInputHandler(), getDisplayHandler());
+        ICommand player2Command = new PlayerCommand(getGameEngine(), 2, getInputHandler(), getDisplayHandler());
 
-        commands.register(1, player1Command);
-        commands.register(2, player2Command);
-        commands.register(3, displayLoadoutsCommand);
+        getCommandContainer().register(1, player1Command);
+        getCommandContainer().register(2, player2Command);
+        getCommandContainer().register(3, displayLoadoutsCommand);
     }
-
-
-    private void initiatePlayerMenu(){
-        StringBuilder availableCommands = new StringBuilder();
-        Map<Integer, ICommand> commandMap = commands.getCommands();
-        int count = 0;
-        for(Integer i : commandMap.keySet()){
-            availableCommands.append(i + ". " + commandMap.get(i).toString());
-            count++;
-            availableCommands.append("\n");
-        }
-        availableCommands.append((count + 1) + ". Main Menu\n");
-        playerMenuText = availableCommands.toString();
-    }
-
 
 }

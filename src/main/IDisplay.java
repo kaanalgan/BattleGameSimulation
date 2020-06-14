@@ -6,9 +6,7 @@ public interface IDisplay {
 
     void displayLoadouts(String player1Loadout, String player2Loadout);
 
-    //TODO: ???
-    void displayAddPart(String parts);
-
+    void displayWarning(String warningText);
 
     void displayGameReport(String simulationResults);
 }

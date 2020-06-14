@@ -32,9 +32,12 @@ public class ConsoleDisplay implements IDisplay{
     }
 
     @Override
-    public void displayAddPart(String parts) {
-
+    public void displayWarning(String warningText) {
+        System.out.println("********************************");
+        System.out.println(warningText + "!");
+        System.out.println("********************************");
     }
+
 
     @Override
     public void displayGameReport(String simulationResults) {

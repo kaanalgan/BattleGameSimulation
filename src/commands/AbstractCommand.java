@@ -12,4 +12,6 @@ public abstract class AbstractCommand implements ICommand{
 
     protected IGameEngine getGameEngine(){ return gameEngine; }
 
+    public abstract String toString();
+
 }

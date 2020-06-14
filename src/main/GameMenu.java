@@ -1,70 +1,54 @@
 package main;
 
-import commands.CommandContainer;
-import commands.ICommand;
+import commands.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class GameMenu {
+public class GameMenu extends AbstractMenuCommand {
 
-    private Input inputHandler;
-    private IDisplay displayHandler;
-    private CommandContainer commands;
-    private String menuText;
-
-    public GameMenu(Input inputHandler, IDisplay displayHandler, CommandContainer commands){
-        setDisplayHandler(displayHandler);
-        setInputHandler(inputHandler);
-        setCommands(commands);
-        initiateMenuText();
+    public GameMenu(IGameEngine gameEngine, Input inputHandler, IDisplay displayHandler){
+        super(gameEngine, displayHandler, inputHandler);
+        initiateMenu();
     }
 
-    public void mainMenu(){
-        displayHandler.displayMenu(menuText, "Choose a command: ");
-        int commandId = inputHandler.readInt();
+    @Override
+    protected void initiateCommands() {
+
+        //Available commands' container
+        setCommandContainer(new CommandContainer(new HashMap<Integer, ICommand>()));
+
+        //Initiate commands
+        ICommand resetGameCommand = new ResetCommand(getGameEngine());
+        ICommand runSimulationCommand = new RunSimulationCommand(getGameEngine(), getDisplayHandler());
+        ICommand playerOperationsCommand = new PlayerOperationsCommand(getGameEngine(), getInputHandler(), getDisplayHandler());
+        ICommand exitGameCommand = new ExitGameCommand(getGameEngine(), getDisplayHandler());
+
+        //Add created commands
+        getCommandContainer().register(1, playerOperationsCommand);
+        getCommandContainer().register(2, runSimulationCommand);
+        getCommandContainer().register(3, resetGameCommand);
+        getCommandContainer().register(4, exitGameCommand);
+    }
+
+
+    @Override
+    public void execute() {
+        getDisplayHandler().displayMenu(getMenuText(), "Choose a command: ");
+        int commandId = getInputHandler().readInt();
 
         try{
-            commands.execute(commandId);
+            getCommandContainer().execute(commandId);
 
         }catch(UnsupportedOperationException e){
             e.printStackTrace();
         }
     }
 
-
-    private void initiateMenuText(){
-        StringBuilder menuText = new StringBuilder();
-        Map<Integer, ICommand> commandMap = commands.getCommands();
-        int count = 0;
-        for(Integer i : commandMap.keySet()){
-            menuText.append(i + "." + commandMap.get(i).toString());
-            count++;
-            if(count < commandMap.keySet().size()){
-                menuText.append("\n");
-            }
-        }
-        this.menuText = menuText.toString();
+    @Override
+    public String toString() {
+        return "Main Menu";
     }
 
-    private void setCommands(CommandContainer commands){
-        if(commands == null){
-            throw new IllegalArgumentException("Command container cannot be null.");
-        }
-        this.commands = commands;
-    }
-
-    private void setInputHandler(Input inputHandler){
-        if(inputHandler == null){
-            throw new IllegalArgumentException("Input handler argument cannot be null.");
-        }
-        this.inputHandler = inputHandler;
-    }
-
-    private void setDisplayHandler(IDisplay displayHandler){
-        if(displayHandler == null){
-            throw new IllegalArgumentException("Display handler argument cannot be null");
-        }
-        this.displayHandler = displayHandler;
-    }
 
 }

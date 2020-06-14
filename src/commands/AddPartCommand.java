@@ -15,10 +15,10 @@ public class AddPartCommand extends AbstractCommand {
 
     public AddPartCommand(IGameEngine gameEngine, List<Warcraft> warcrafts, IDisplay displayHandler, Input inputHandler, int playerNo) {
         super(gameEngine);
-        this.warcrafts = getGameEngine().getPlayerLoadout(playerNo);
-        this.inputHandler = inputHandler;
-        this.displayHandler = displayHandler;
-        this.playerNo = playerNo;
+        setWarcrafts(getGameEngine().getPlayerLoadout(playerNo));
+        setInputHandler(inputHandler);
+        setDisplayHandler(displayHandler);
+        setPlayerNo(playerNo);
         initiateMenuText();
     }
 
@@ -33,12 +33,42 @@ public class AddPartCommand extends AbstractCommand {
         menuItems = warcrafts.toString();
     }
 
+    private void setWarcrafts(List<Warcraft> warcrafts){
+        if(warcrafts == null){
+            throw new IllegalArgumentException("Player's list of warcrafts cannot be null");
+        }
+        this.warcrafts = warcrafts;
+    }
+
+    private void setDisplayHandler(IDisplay displayHandler){
+        if(displayHandler == null){
+            throw new IllegalArgumentException("IDisplay object cannot be null");
+        }
+        this.displayHandler = displayHandler;
+    }
+
+    private void setInputHandler(Input inputHandler){
+        if(inputHandler == null){
+            throw new IllegalArgumentException("IDisplay object cannot be null");
+        }
+        this.inputHandler = inputHandler;
+    }
+
+    private void setPlayerNo(int playerNo) {
+        if(playerNo <= 0){
+            throw new IllegalArgumentException("Given player number must be greater than 0");
+        }
+        this.playerNo = playerNo;
+    }
 
     public String toString(){ return "Add part"; }
 
     @Override
     public void execute() {
+
+        /* Get the most up-to-date loadout of the player. */
         initiateMenuText();
+
         displayHandler.displayMenu(menuItems, "Choose a warcraft: ");
         int id = inputHandler.readInt();
 
