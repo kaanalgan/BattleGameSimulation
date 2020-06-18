@@ -1,12 +1,9 @@
 package warcrafts.plane;
 
-import addables.Addable;
-import warcrafts.AbstractWarcraft;
+import warcrafts.Warcraft;
 import warcrafts.WarcraftType;
 
-import java.util.List;
-
-public class Plane extends AbstractWarcraft {
+public class Plane implements Warcraft {
 
     private Engine engine;
     private WarcraftType type;
@@ -28,15 +25,11 @@ public class Plane extends AbstractWarcraft {
 
     @Override
     public String toString() {
-        List<Addable> addables = getAddables();
-        StringBuilder warcraftStrBuilder = new StringBuilder();
-        warcraftStrBuilder.append(type.toString() + " [" + type.getMinPoint()+ ", " + type.getMaxPoint()
-                + "] " + " with " + engine.name() + " [" + engine.getMinPoint() + ", " + engine.getMaxPoint() + "]");
-        System.out.println("addables' length: " + addables.size());
-        for(Addable a : addables){
-            warcraftStrBuilder.append("(" + a.toString() + ") ");
-        }
-        return warcraftStrBuilder.toString();
+
+        String str = type.toString() + " [" + type.getMinPoint()+ ", " + type.getMaxPoint()
+                + "] " + " with " + engine.name() + " [" + engine.getMinPoint() + ", " + engine.getMaxPoint() + "]";
+
+        return str;
     }
 
     private void setPlaneType(PlaneType planeType) {

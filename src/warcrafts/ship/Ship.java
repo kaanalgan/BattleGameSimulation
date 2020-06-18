@@ -1,12 +1,9 @@
 package warcrafts.ship;
 
-import addables.Addable;
-import warcrafts.AbstractWarcraft;
+import warcrafts.Warcraft;
 import warcrafts.WarcraftType;
 
-import java.util.List;
-
-public class Ship extends AbstractWarcraft {
+public class Ship implements Warcraft {
     WarcraftType type;
 
     public Ship(ShipType type) {
@@ -25,13 +22,9 @@ public class Ship extends AbstractWarcraft {
 
     @Override
     public String toString() {
-        List<Addable> addables = getAddables();
-        StringBuilder warcraftStrBuilder = new StringBuilder();
-        warcraftStrBuilder.append(type.toString() + " [" + type.getMinPoint() + ", " + type.getMaxPoint() + "] ");
-        for(Addable a : addables){
-            warcraftStrBuilder.append("(" + a.toString() + ") ");
-        }
-        return warcraftStrBuilder.toString();
+        String str = type.toString() + " [" + type.getMinPoint() + ", " + type.getMaxPoint() + "] ";
+
+        return str;
     }
 
     private void setShipType(ShipType shipType) {

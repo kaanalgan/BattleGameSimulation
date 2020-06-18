@@ -1,8 +1,6 @@
 package players;
 
-import addables.*;
-import exceptions.IllegalWarcraftTypeException;
-import exceptions.PartAlreadyExistException;
+import warcrafts.addables.*;
 import warcrafts.plane.Plane;
 import warcrafts.ship.Ship;
 import warcrafts.Warcraft;
@@ -25,9 +23,9 @@ public class Player {
             } else if (warcraft instanceof Ship) {
                 return addShip(warcraft);
             } else if (warcraft instanceof WarcraftDecorator) {
-                if (((WarcraftDecorator) warcraft).getOgType().equals(Plane.class)) {
+                if (((WarcraftDecorator) warcraft).getOriginalType().equals(Plane.class)) {
                     return addPlane(warcraft);
-                } else if (((WarcraftDecorator) warcraft).getOgType().equals(Ship.class)) {
+                } else if (((WarcraftDecorator) warcraft).getOriginalType().equals(Ship.class)) {
                     return addShip(warcraft);
                 } else System.out.println("Unknown type");
             } else System.out.println("Unknown type");
@@ -37,23 +35,11 @@ public class Player {
         return false;
     }
 
-    public boolean addPartToWarcraft(int warcraftNo, Addable addable) throws IllegalWarcraftTypeException, PartAlreadyExistException {
+    public boolean addPartToWarcraft(int warcraftNo, Addable addable) {
         Warcraft warcraft = warcrafts.get(warcraftNo);
-        switch (addable){
-            case BOMB: warcraft = new Bomb(warcraft);
-                break;
-            case CANNON: warcraft = new Cannon(warcraft);
-                break;
-            case ROCKET: warcraft = new Rocket(warcraft);
-                break;
-            case TORPEDO: warcraft = new Torpedo(warcraft);
-                break;
-            case MISSILE: warcraft = new Missile(warcraft);
-                break;
-            case MACHINE_GUN: warcraft = new MachineGun(warcraft);
-                break;
-            default: return false;
-        }
+
+        warcraft = new PartDecorator(warcraft, addable);
+
         warcrafts.set(warcraftNo, warcraft);
         return true;
     }
@@ -104,7 +90,7 @@ public class Player {
             if (warcraft instanceof Plane) {
                 count++;
             } else if (warcraft instanceof WarcraftDecorator) {
-                if (((WarcraftDecorator) warcraft).getOgType().equals(Plane.class)) {
+                if (((WarcraftDecorator) warcraft).getOriginalType().equals(Plane.class)) {
                     count++;
                 }
             }
@@ -118,7 +104,7 @@ public class Player {
             if (warcraft instanceof Ship) {
                 count++;
             } else if (warcraft instanceof WarcraftDecorator) {
-                if (((WarcraftDecorator) warcraft).getOgType().equals(Ship.class)) {
+                if (((WarcraftDecorator) warcraft).getOriginalType().equals(Ship.class)) {
                     count++;
                 }
             }

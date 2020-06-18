@@ -1,8 +1,6 @@
 package commands;
 
-import addables.Addable;
-import exceptions.IllegalWarcraftTypeException;
-import exceptions.PartAlreadyExistException;
+import warcrafts.addables.Addable;
 import gameengine.IGameEngine;
 import io.IDisplay;
 import io.Input;
@@ -165,10 +163,8 @@ public class AddPartCommand extends AbstractCommand {
         System.out.println("part to add: " + partToAdd);
         System.out.println("warcraft no: " + (id-1));
 
-        try {
-            getGameEngine().addPart(playerNo, id, partToAdd);
-        } catch (IllegalWarcraftTypeException | PartAlreadyExistException e) {
-            e.printStackTrace();
-        }
+
+        getGameEngine().addPart(playerNo, id, partToAdd);
+
     }
 }

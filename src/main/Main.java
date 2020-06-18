@@ -1,8 +1,8 @@
 /*package main;
 
-import addables.Missile;
-import addables.Rocket;
-import addables.Torpedo;
+import warcrafts.addables.Missile;
+import warcrafts.addables.Rocket;
+import warcrafts.addables.Torpedo;
 import exceptions.IllegalWarcraftTypeException;
 import players.Player;
 import warcrafts.*;

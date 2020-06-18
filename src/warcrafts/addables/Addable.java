@@ -1,4 +1,4 @@
-package addables;
+package warcrafts.addables;
 
 import java.util.Random;
 
