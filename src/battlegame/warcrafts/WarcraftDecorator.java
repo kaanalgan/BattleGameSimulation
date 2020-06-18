@@ -19,11 +19,11 @@ public abstract class WarcraftDecorator implements Warcraft {
             originalType = ((WarcraftDecorator) warcraft).getOriginalType();
         }
     }
-    
-    public String toString(){
+
+    public String toString() {
         return warcraft.toString();
     }
-    
+
     public Class getOriginalType() {
         return originalType;
     }
