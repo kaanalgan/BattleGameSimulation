@@ -65,6 +65,7 @@ public class ConsoleDisplay implements IDisplay{
     }
 
     public void displayErrorMessage(String message){
-        System.err.println(message);
+
+        System.err.print(message);
     }
 }

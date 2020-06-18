@@ -12,7 +12,7 @@ public class PlayerCommand extends AbstractMenuCommand{
 
     public PlayerCommand(IGameEngine gameEngine, int playerNo, Input inputHandler, IDisplay displayHandler) {
         super(gameEngine, displayHandler, inputHandler);
-        this.playerNo = playerNo;
+        setPlayerNo(playerNo);
         initiateMenu();
     }
 
@@ -26,5 +26,12 @@ public class PlayerCommand extends AbstractMenuCommand{
 
         getCommandContainer().register(1, addItemCommand);
         getCommandContainer().register(2, addPartCommand);
+    }
+
+    private void setPlayerNo(int playerNo){
+        if(playerNo != 1 && playerNo != 2){
+            throw new IllegalArgumentException("Illegal player number (should be either 1 or 2)");
+        }
+        this.playerNo = playerNo;
     }
 }

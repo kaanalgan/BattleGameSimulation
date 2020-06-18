@@ -21,10 +21,11 @@ public class AddItemCommand extends AbstractCommand{
     public AddItemCommand(IGameEngine gameEngine, int playerNo, IDisplay displayHandler, Input inputHandler) {
         super(gameEngine);
         setPlayerNo(playerNo);
-        this.playerNo = playerNo;
-        this.displayHandler = displayHandler;
-        this.inputHandler = inputHandler;
+        setDisplayHandler(displayHandler);
+        setDisplayHandler(displayHandler);
+        setInputHandler(inputHandler);
     }
+
 
     @Override
     public void execute() {
@@ -35,7 +36,6 @@ public class AddItemCommand extends AbstractCommand{
         int warcraftNo = inputHandler.readInt();
         WarcraftType warcraftType;
         int typeNo;
-        Warcraft newWarcraft;
 
         switch(warcraftNo){
             case 1:
@@ -140,4 +140,28 @@ public class AddItemCommand extends AbstractCommand{
     }
 
     public String toString() { return "Add item"; }
+
+
+
+    private void setInputHandler(Input inputHandler){
+        if(inputHandler == null){
+            throw new IllegalArgumentException("Input handler object is null");
+        }
+        this.inputHandler = inputHandler;
+    }
+
+    private void setDisplayHandler(IDisplay displayHandler){
+        if(displayHandler == null){
+            throw new IllegalArgumentException("IDisplay object is null");
+        }
+        this.displayHandler = displayHandler;
+    }
+
+    private void setPlayerNo(int playerNo){
+        if(playerNo != 1 && playerNo != 2){
+            throw new IllegalArgumentException("Given player number can either be 1 or 2.");
+        }
+        this.playerNo = playerNo;
+    }
+
 }
