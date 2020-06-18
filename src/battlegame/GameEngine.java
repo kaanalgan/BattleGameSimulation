@@ -2,6 +2,7 @@ package battlegame;
 
 import exceptions.IllegalPlayerOperationException;
 import battlegame.warcrafts.Addable;
+import exceptions.PartAlreadyExistsException;
 import exceptions.PartNotCompatibleException;
 import exceptions.UnknownWarcraftTypeException;
 import battlegame.utilities.GameReport;
@@ -41,7 +42,7 @@ public class GameEngine implements IGameEngine {
     }
 
     @Override
-    public boolean addPart(int playerNo, int warcraftNo, Addable part) throws PartNotCompatibleException {
+    public boolean addPart(int playerNo, int warcraftNo, Addable part) throws PartNotCompatibleException, PartAlreadyExistsException {
         Player player = players[playerNo-1];
         return player.addPartToWarcraft(warcraftNo-1, part);
     }
