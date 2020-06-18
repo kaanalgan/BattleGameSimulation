@@ -36,4 +36,6 @@ public abstract class WarcraftDecorator implements Warcraft {
         return warcraft.getType();
     }
 
+    public abstract boolean isAlreadyAdded(Addable addable);
+
 }
