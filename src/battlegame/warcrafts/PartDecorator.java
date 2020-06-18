@@ -36,15 +36,15 @@ public class PartDecorator extends WarcraftDecorator {
     private void isAddable(Addable addable) throws PartNotCompatibleException, PartAlreadyExistsException {
         if (getOriginalType() == Plane.class) {
             if (!(addable.equals(Addable.ROCKET) || addable.equals(Addable.MISSILE) || addable.equals(Addable.MACHINE_GUN) || addable.equals(Addable.BOMB))) {
-                throw new PartNotCompatibleException("Part is not compatible with the warcraft");
+                throw new PartNotCompatibleException("Part is not compatible with planes");
             } else if (isAlreadyAdded(addable)) {
-                throw new PartAlreadyExistsException("Part you are trying to add already exist");
+                throw new PartAlreadyExistsException("Part you are trying to add already attached to the warcraft");
             }
         } else if (getOriginalType() == Ship.class) {
             if (!(addable.equals(Addable.ROCKET) || addable.equals(Addable.TORPEDO) || addable.equals(Addable.CANNON))) {
-                throw new PartNotCompatibleException("Part is not compatible with the warcraft");
+                throw new PartNotCompatibleException("Part is not compatible with ships");
             } else if (isAlreadyAdded(addable)) {
-                throw new PartAlreadyExistsException("Part you are trying to add already exist");
+                throw new PartAlreadyExistsException("Part you are trying to add already attached to the warcraft");
             }
         }
     }

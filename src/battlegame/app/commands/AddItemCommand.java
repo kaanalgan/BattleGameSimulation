@@ -107,7 +107,7 @@ public class AddItemCommand extends AbstractCommand{
                 }
                 newWarcraft = new Ship((ShipType)warcraftType);
                 try {
-                    getGameEngine().addWarcraft(playerNo, warcraftType, null);
+                    getGameEngine().addWarcraft(playerNo, warcraftType);
                 } catch (UnknownWarcraftTypeException | IllegalPlayerOperationException e) {
                     displayHandler.displayErrorMessage(e.getMessage());
                 }
