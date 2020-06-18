@@ -21,7 +21,7 @@ public class AddPartCommand extends AbstractCommand {
     private String menuItems;
     private int playerNo;
 
-    public AddPartCommand(IGameEngine gameEngine, List<Warcraft> warcrafts, IDisplay displayHandler, Input inputHandler, int playerNo) {
+    public AddPartCommand(IGameEngine gameEngine, IDisplay displayHandler, Input inputHandler, int playerNo) {
         super(gameEngine);
         setWarcrafts(getGameEngine().getPlayerLoadout(playerNo));
         setInputHandler(inputHandler);

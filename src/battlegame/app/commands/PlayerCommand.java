@@ -22,7 +22,7 @@ public class PlayerCommand extends AbstractMenuCommand{
         setCommandContainer(new CommandContainer(new HashMap<>()));
 
         ICommand addItemCommand = new AddItemCommand(getGameEngine(), playerNo, getDisplayHandler(), getInputHandler());
-        ICommand addPartCommand = new AddPartCommand(getGameEngine(),getGameEngine().getPlayerLoadout(playerNo), getDisplayHandler(), getInputHandler(), playerNo);
+        ICommand addPartCommand = new AddPartCommand(getGameEngine(), getDisplayHandler(), getInputHandler(), playerNo);
 
         getCommandContainer().register(1, addItemCommand);
         getCommandContainer().register(2, addPartCommand);
