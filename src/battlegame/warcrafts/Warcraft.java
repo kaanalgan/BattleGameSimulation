@@ -2,9 +2,9 @@ package battlegame.warcrafts;
 
 public interface Warcraft {
 
-    public int getPoint();
+    int getPoint();
 
-    public WarcraftType getType();
+    WarcraftType getType();
 
-    public String toString();
+    String toString();
 }

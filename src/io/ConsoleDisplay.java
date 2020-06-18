@@ -1,6 +1,6 @@
 package io;
 
-public class ConsoleDisplay implements IDisplay{
+public class ConsoleDisplay implements IDisplay {
 
     @Override
     public void displayMenu(String menuText, String requestMessage) {
@@ -50,21 +50,21 @@ public class ConsoleDisplay implements IDisplay{
         System.out.println("Player2's score: " + player2Score + " points");
 
 
-        if(player1Score > player2Score){
+        if (player1Score > player2Score) {
 
             System.out.println("Player1 wins by " + (player1Score - player2Score) + " points");
 
-        }else if(player1Score < player2Score){
+        } else if (player1Score < player2Score) {
 
             System.out.println("Player2 wins by " + (player2Score - player1Score) + " points");
 
-        }else{
+        } else {
 
             System.out.println("Draw!!");
         }
     }
 
-    public void displayErrorMessage(String message){
+    public void displayErrorMessage(String message) {
 
         System.err.print(message);
     }

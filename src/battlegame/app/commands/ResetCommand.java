@@ -2,7 +2,7 @@ package battlegame.app.commands;
 
 import battlegame.IGameEngine;
 
-public class ResetCommand extends AbstractCommand{
+public class ResetCommand extends AbstractCommand {
 
     public ResetCommand(IGameEngine gameEngine) {
         super(gameEngine);
@@ -13,7 +13,7 @@ public class ResetCommand extends AbstractCommand{
         getGameEngine().resetItems();
     }
 
-    public String toString(){
+    public String toString() {
         return "Reset Items";
     }
 }

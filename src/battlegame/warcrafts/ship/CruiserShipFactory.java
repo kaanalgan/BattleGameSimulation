@@ -1,6 +1,6 @@
 package battlegame.warcrafts.ship;
 
-public class CruiserShipFactory implements ShipFactory{
+public class CruiserShipFactory implements ShipFactory {
 
     @Override
     public Ship createShip() {

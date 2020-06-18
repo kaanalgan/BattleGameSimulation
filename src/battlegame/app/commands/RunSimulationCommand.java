@@ -1,12 +1,12 @@
 package battlegame.app.commands;
 
+import battlegame.IGameEngine;
 import battlegame.utilities.GameReport;
 import io.IDisplay;
-import battlegame.IGameEngine;
 
-public class RunSimulationCommand extends AbstractCommand{
+public class RunSimulationCommand extends AbstractCommand {
 
-    private IDisplay displayHandler;
+    private final IDisplay displayHandler;
 
     public RunSimulationCommand(IGameEngine gameEngine, IDisplay displayHandler) {
         super(gameEngine);
@@ -14,7 +14,7 @@ public class RunSimulationCommand extends AbstractCommand{
     }
 
 
-    public String toString(){
+    public String toString() {
         return "Run Simulation";
     }
 

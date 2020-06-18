@@ -2,15 +2,17 @@ package battlegame.app.commands;
 
 import battlegame.IGameEngine;
 
-public abstract class AbstractCommand implements ICommand{
+public abstract class AbstractCommand implements ICommand {
 
-    private IGameEngine gameEngine;
+    private final IGameEngine gameEngine;
 
-    protected AbstractCommand(IGameEngine gameEngine){
+    protected AbstractCommand(IGameEngine gameEngine) {
         this.gameEngine = gameEngine;
     }
 
-    protected IGameEngine getGameEngine(){ return gameEngine; }
+    protected IGameEngine getGameEngine() {
+        return gameEngine;
+    }
 
     public abstract String toString();
 

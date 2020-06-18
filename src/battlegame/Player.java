@@ -1,9 +1,9 @@
 package battlegame;
 
 import battlegame.warcrafts.*;
-import exceptions.IllegalPlayerOperationException;
 import battlegame.warcrafts.plane.Plane;
 import battlegame.warcrafts.ship.Ship;
+import exceptions.IllegalPlayerOperationException;
 import exceptions.PartAlreadyExistsException;
 import exceptions.PartNotCompatibleException;
 
@@ -46,15 +46,15 @@ public class Player {
         return true;
     }
 
-    public int simulateAttack(){
+    public int simulateAttack() {
         int totalPoint = 0;
-        for (Warcraft warcraft: warcrafts) {
+        for (Warcraft warcraft : warcrafts) {
             totalPoint += warcraft.getPoint();
         }
         return totalPoint;
     }
 
-    public void resetItems(){
+    public void resetItems() {
         warcrafts = new ArrayList<>();
     }
 

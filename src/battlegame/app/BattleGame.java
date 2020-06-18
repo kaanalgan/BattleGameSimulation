@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class BattleGame {
 
-    public void start(){
+    public void start() {
 
         //Game engine
         IGameEngine gameEngine = new GameEngine(2);
@@ -23,6 +23,8 @@ public class BattleGame {
 
         //Create battlegame.main menu and start game
         MainMenu mainMenu = new MainMenu(gameEngine, inputHandler, displayHandler);
-        while(true) { mainMenu.execute(); }
+        while (true) {
+            mainMenu.execute();
+        }
     }
 }

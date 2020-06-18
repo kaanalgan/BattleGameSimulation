@@ -5,7 +5,7 @@ import battlegame.warcrafts.ship.Ship;
 
 public abstract class WarcraftDecorator implements Warcraft {
 
-    private Warcraft warcraft;
+    private final Warcraft warcraft;
     private Class originalType;
 
     public WarcraftDecorator(Warcraft warcraft) {

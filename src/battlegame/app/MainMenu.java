@@ -1,15 +1,15 @@
 package battlegame.app;
 
+import battlegame.IGameEngine;
 import battlegame.app.commands.*;
 import io.IDisplay;
-import battlegame.IGameEngine;
 import io.Input;
 
 import java.util.HashMap;
 
 public class MainMenu extends AbstractMenuCommand {
 
-    public MainMenu(IGameEngine gameEngine, Input inputHandler, IDisplay displayHandler){
+    public MainMenu(IGameEngine gameEngine, Input inputHandler, IDisplay displayHandler) {
         super(gameEngine, displayHandler, inputHandler);
         initiateMenu();
     }

@@ -1,11 +1,11 @@
 package battlegame.app.commands;
 
-import io.IDisplay;
 import battlegame.IGameEngine;
+import io.IDisplay;
 
-public class ExitGameCommand extends AbstractCommand{
+public class ExitGameCommand extends AbstractCommand {
 
-    private IDisplay displayHandler;
+    private final IDisplay displayHandler;
 
     public ExitGameCommand(IGameEngine gameEngine, IDisplay displayHandler) {
         super(gameEngine);

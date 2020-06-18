@@ -17,12 +17,16 @@ public enum ShipType implements WarcraftType {
         this.maxPoint = maxPoint;
     }
 
-    public int getMinPoint() { return minPoint; }
+    public int getMinPoint() {
+        return minPoint;
+    }
 
-    public int getMaxPoint() { return maxPoint; }
+    public int getMaxPoint() {
+        return maxPoint;
+    }
 
     public int getPoint() {
         Random r = new Random();
-        return r.nextInt(maxPoint+1-minPoint) + minPoint;
+        return r.nextInt(maxPoint + 1 - minPoint) + minPoint;
     }
 }

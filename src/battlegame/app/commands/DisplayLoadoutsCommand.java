@@ -1,14 +1,14 @@
 package battlegame.app.commands;
 
-import io.IDisplay;
 import battlegame.IGameEngine;
 import battlegame.warcrafts.Warcraft;
+import io.IDisplay;
 
 import java.util.List;
 
-public class DisplayLoadoutsCommand extends AbstractCommand{
+public class DisplayLoadoutsCommand extends AbstractCommand {
 
-    private IDisplay displayHandler;
+    private final IDisplay displayHandler;
 
     public DisplayLoadoutsCommand(IGameEngine gameEngine, IDisplay displayHandler) {
         super(gameEngine);
@@ -23,7 +23,7 @@ public class DisplayLoadoutsCommand extends AbstractCommand{
         StringBuilder player1Loadout = new StringBuilder();
         int itemIndex = 1;
 
-        for(Warcraft w : player1Loadouts){
+        for (Warcraft w : player1Loadouts) {
             player1Loadout.append(itemIndex + ". " + w.toString() + "\n");
             itemIndex++;
         }
@@ -32,7 +32,7 @@ public class DisplayLoadoutsCommand extends AbstractCommand{
         StringBuilder player2Loadout = new StringBuilder();
         itemIndex = 1;
 
-        for(Warcraft w : player2Loadouts){
+        for (Warcraft w : player2Loadouts) {
             player2Loadout.append(itemIndex + ". " + w.toString() + "\n");
             itemIndex++;
         }
@@ -41,5 +41,7 @@ public class DisplayLoadoutsCommand extends AbstractCommand{
     }
 
 
-    public String toString() { return "Display Loadouts"; }
+    public String toString() {
+        return "Display Loadouts";
+    }
 }

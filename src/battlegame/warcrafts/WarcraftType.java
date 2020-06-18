@@ -2,9 +2,9 @@ package battlegame.warcrafts;
 
 public interface WarcraftType {
 
-    public int getPoint();
+    int getPoint();
 
-    public int getMaxPoint();
+    int getMaxPoint();
 
-    public int getMinPoint();
+    int getMinPoint();
 }

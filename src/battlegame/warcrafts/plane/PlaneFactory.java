@@ -1,6 +1,6 @@
 package battlegame.warcrafts.plane;
 
-public interface PlaneFactory{
+public interface PlaneFactory {
 
-    public Plane createPlane(Engine engine);
+    Plane createPlane(Engine engine);
 }

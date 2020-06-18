@@ -7,7 +7,7 @@ import exceptions.PartNotCompatibleException;
 
 public class PartDecorator extends WarcraftDecorator {
 
-    private Addable addable;
+    private final Addable addable;
 
     public PartDecorator(Warcraft warcraft, Addable addable) throws PartNotCompatibleException, PartAlreadyExistsException {
         super(warcraft);

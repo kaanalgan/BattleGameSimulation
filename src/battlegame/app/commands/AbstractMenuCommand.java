@@ -1,8 +1,8 @@
 package battlegame.app.commands;
 
+import battlegame.IGameEngine;
 import battlegame.app.MainMenu;
 import io.IDisplay;
-import battlegame.IGameEngine;
 import io.Input;
 
 import java.util.Map;
@@ -27,19 +27,19 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
 
 
     @Override
-    public void execute(){
+    public void execute() {
         int operationId;
-        do{
+        do {
             getDisplayHandler().displayMenu(getMenuText(), "Choose a command: ");
             operationId = getInputHandler().readInt();
-            if((operationId == commandContainer.getCommands().size()+1) && (getClass() != MainMenu.class))
+            if ((operationId == commandContainer.getCommands().size() + 1) && (getClass() != MainMenu.class))
                 return;
-            try{
+            try {
                 getCommandContainer().execute(operationId);
-            }catch (UnsupportedOperationException e){
+            } catch (UnsupportedOperationException e) {
                 displayHandler.displayErrorMessage("Given operation id is not an option, try again with a different number.");
             }
-        }while(!(operationId == commandContainer.getCommands().size()+1));
+        } while (!(operationId == commandContainer.getCommands().size() + 1));
     }
 
     @Override
@@ -49,8 +49,22 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
         return this.displayHandler;
     }
 
+    private void setDisplayHandler(IDisplay displayHandler) {
+        if (displayHandler == null) {
+            throw new IllegalArgumentException("IDisplay object cannot be null");
+        }
+        this.displayHandler = displayHandler;
+    }
+
     public Input getInputHandler() {
         return this.inputHandler;
+    }
+
+    private void setInputHandler(Input inputHandler) {
+        if (inputHandler == null) {
+            throw new IllegalArgumentException("IDisplay object cannot be null");
+        }
+        this.inputHandler = inputHandler;
     }
 
     protected abstract void initiateCommands();
@@ -66,40 +80,25 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
         }
 
         /* If the caller class is not MainMenu, then add a Main Menu option to its menu text */
-        if(getClass() != MainMenu.class){
-            menu.append(count+1 + ". " + "Back");
-        }else{
+        if (getClass() != MainMenu.class) {
+            menu.append(count + 1 + ". " + "Back");
+        } else {
             menu.deleteCharAt(menu.lastIndexOf("\n"));
         }
 
         menuText = menu.toString();
     }
 
-    protected void setCommandContainer(CommandContainer commandContainer) {
-        this.commandContainer = commandContainer;
-    }
-
     protected CommandContainer getCommandContainer() {
         return commandContainer;
     }
 
+    protected void setCommandContainer(CommandContainer commandContainer) {
+        this.commandContainer = commandContainer;
+    }
+
     protected String getMenuText() {
         return this.menuText;
-    }
-
-
-    private void setDisplayHandler(IDisplay displayHandler) {
-        if (displayHandler == null) {
-            throw new IllegalArgumentException("IDisplay object cannot be null");
-        }
-        this.displayHandler = displayHandler;
-    }
-
-    private void setInputHandler(Input inputHandler) {
-        if (inputHandler == null) {
-            throw new IllegalArgumentException("IDisplay object cannot be null");
-        }
-        this.inputHandler = inputHandler;
     }
 
 }

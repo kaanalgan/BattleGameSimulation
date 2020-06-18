@@ -2,11 +2,11 @@ package io;
 
 import java.util.Scanner;
 
-public class ConsoleInput implements Input{
+public class ConsoleInput implements Input {
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
-    public ConsoleInput(Scanner scanner){
+    public ConsoleInput(Scanner scanner) {
         this.scanner = scanner;
     }
 
@@ -21,7 +21,7 @@ public class ConsoleInput implements Input{
     }
 
     @Override
-    public void closeInputStream(){
+    public void closeInputStream() {
         scanner.close();
     }
 }

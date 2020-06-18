@@ -1,12 +1,12 @@
 package battlegame.app.commands;
 
-import io.IDisplay;
 import battlegame.IGameEngine;
+import io.IDisplay;
 import io.Input;
 
 import java.util.HashMap;
 
-public class PlayerOperationsCommand extends AbstractMenuCommand{
+public class PlayerOperationsCommand extends AbstractMenuCommand {
 
     public PlayerOperationsCommand(IGameEngine gameEngine, Input inputHandler, IDisplay displayHandler) {
         super(gameEngine, displayHandler, inputHandler);
@@ -14,13 +14,12 @@ public class PlayerOperationsCommand extends AbstractMenuCommand{
     }
 
 
-
-    public String toString(){
+    public String toString() {
         return "Player Operations";
     }
 
 
-    protected void initiateCommands(){
+    protected void initiateCommands() {
         setCommandContainer(new CommandContainer(new HashMap<>()));
 
         ICommand player1Command = new PlayerCommand(getGameEngine(), 1, getInputHandler(), getDisplayHandler());

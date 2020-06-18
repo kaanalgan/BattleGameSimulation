@@ -19,7 +19,7 @@ public enum PlaneType implements WarcraftType {
 
     public int getPoint() {
         Random r = new Random();
-        return r.nextInt(maxPoint+1-minPoint) + minPoint;
+        return r.nextInt(maxPoint + 1 - minPoint) + minPoint;
     }
 
     @Override

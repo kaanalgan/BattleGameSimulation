@@ -1,14 +1,15 @@
 package battlegame;
 
-import exceptions.IllegalPlayerOperationException;
+import battlegame.utilities.GameReport;
 import battlegame.warcrafts.Addable;
+import battlegame.warcrafts.Warcraft;
+import battlegame.warcrafts.WarcraftType;
+import battlegame.warcrafts.plane.*;
+import battlegame.warcrafts.ship.*;
+import exceptions.IllegalPlayerOperationException;
 import exceptions.PartAlreadyExistsException;
 import exceptions.PartNotCompatibleException;
 import exceptions.UnknownWarcraftTypeException;
-import battlegame.utilities.GameReport;
-import battlegame.warcrafts.*;
-import battlegame.warcrafts.plane.*;
-import battlegame.warcrafts.ship.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +18,10 @@ public class GameEngine implements IGameEngine {
 
     private final Player[] players;
 
-    public GameEngine(int playerNum){
+    public GameEngine(int playerNum) {
         players = new Player[playerNum];
 
-        for(int i=0; i<playerNum; i++){
+        for (int i = 0; i < playerNum; i++) {
             players[i] = new Player();
         }
     }
@@ -28,7 +29,7 @@ public class GameEngine implements IGameEngine {
     @Override
     public boolean addWarcraft(int playerNo, WarcraftType warcraftType)
             throws UnknownWarcraftTypeException, IllegalPlayerOperationException {
-        Player player = players[playerNo-1];
+        Player player = players[playerNo - 1];
         Warcraft warcraft = createWarcraft(warcraftType, null);
         return player.addWarcraft(warcraft);
     }
@@ -36,20 +37,20 @@ public class GameEngine implements IGameEngine {
     @Override
     public boolean addWarcraft(int playerNo, WarcraftType warcraftType, Engine engine)
             throws UnknownWarcraftTypeException, IllegalPlayerOperationException {
-        Player player = players[playerNo-1];
+        Player player = players[playerNo - 1];
         Warcraft warcraft = createWarcraft(warcraftType, engine);
         return player.addWarcraft(warcraft);
     }
 
     @Override
     public boolean addPart(int playerNo, int warcraftNo, Addable part) throws PartNotCompatibleException, PartAlreadyExistsException {
-        Player player = players[playerNo-1];
-        return player.addPartToWarcraft(warcraftNo-1, part);
+        Player player = players[playerNo - 1];
+        return player.addPartToWarcraft(warcraftNo - 1, part);
     }
 
     @Override
     public List<Warcraft> getPlayerLoadout(int playerNo) {
-        Player player = players[playerNo-1];
+        Player player = players[playerNo - 1];
         return player.getWarcrafts();
     }
 
@@ -62,7 +63,7 @@ public class GameEngine implements IGameEngine {
         }
 
         return new GameReport(simulationScores);
-        
+
     }
 
     @Override
@@ -73,37 +74,45 @@ public class GameEngine implements IGameEngine {
     }
 
     private Warcraft createWarcraft(WarcraftType type, Engine engine) throws UnknownWarcraftTypeException {
-        if(type.getClass() == PlaneType.class){
+        if (type.getClass() == PlaneType.class) {
             PlaneType planeType = (PlaneType) type;
             PlaneFactory planeFactory;
-            switch (planeType){
-                case BOMBER: planeFactory = new BomberPlaneFactory();
-                             break;
-                case FIGHTER: planeFactory = new FighterPlaneFactory();
-                              break;
-                case MULTIROLE: planeFactory = new MultirolePlaneFactory();
-                                break;
-                default: planeFactory = new BomberPlaneFactory();
-                         break;
+            switch (planeType) {
+                case BOMBER:
+                    planeFactory = new BomberPlaneFactory();
+                    break;
+                case FIGHTER:
+                    planeFactory = new FighterPlaneFactory();
+                    break;
+                case MULTIROLE:
+                    planeFactory = new MultirolePlaneFactory();
+                    break;
+                default:
+                    planeFactory = new BomberPlaneFactory();
+                    break;
             }
 
             return planeFactory.createPlane(engine);
 
-        }else if(type.getClass() == ShipType.class){
+        } else if (type.getClass() == ShipType.class) {
             ShipType shipType = (ShipType) type;
             ShipFactory shipFactory;
-            switch (shipType){
-                case CRUISER: shipFactory = new CruiserShipFactory();
-                              break;
-                case FRIGATE: shipFactory = new FrigateShipFactory();
-                              break;
-                case DESTROYER: shipFactory = new DestroyerShipFactory();
-                                break;
-                default: shipFactory = new CruiserShipFactory();
-                         break;
+            switch (shipType) {
+                case CRUISER:
+                    shipFactory = new CruiserShipFactory();
+                    break;
+                case FRIGATE:
+                    shipFactory = new FrigateShipFactory();
+                    break;
+                case DESTROYER:
+                    shipFactory = new DestroyerShipFactory();
+                    break;
+                default:
+                    shipFactory = new CruiserShipFactory();
+                    break;
             }
             return shipFactory.createShip();
-         }else{
+        } else {
             throw new UnknownWarcraftTypeException("Warcraft could not be created, type is unknown.");
         }
     }

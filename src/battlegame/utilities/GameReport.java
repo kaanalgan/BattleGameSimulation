@@ -5,22 +5,22 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameReport {
-    private List<Integer> playerScores;
+    private final List<Integer> playerScores;
 
     public GameReport(List<Integer> playerScores) {
         this.playerScores = playerScores;
     }
 
-    public int getPlayerScore(int playerNo){
+    public int getPlayerScore(int playerNo) {
         return playerScores.get(playerNo);
     }
 
-    public int getWinner(){
+    public int getWinner() {
         int maxVal = Collections.max(playerScores);
         return playerScores.indexOf(maxVal) + 1;
     }
 
-    public int winMargin(){
+    public int winMargin() {
         Integer maxVal = Collections.max(playerScores);
         int i = playerScores.indexOf(maxVal);
         List<Integer> scores = new ArrayList(playerScores);

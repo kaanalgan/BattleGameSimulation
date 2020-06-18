@@ -1,12 +1,12 @@
 package battlegame.app.commands;
 
-import io.IDisplay;
 import battlegame.IGameEngine;
+import io.IDisplay;
 import io.Input;
 
 import java.util.HashMap;
 
-public class PlayerCommand extends AbstractMenuCommand{
+public class PlayerCommand extends AbstractMenuCommand {
 
     private int playerNo;
 
@@ -16,9 +16,11 @@ public class PlayerCommand extends AbstractMenuCommand{
         initiateMenu();
     }
 
-    public String toString(){ return "Player" + playerNo; }
+    public String toString() {
+        return "Player" + playerNo;
+    }
 
-    protected void initiateCommands(){
+    protected void initiateCommands() {
         setCommandContainer(new CommandContainer(new HashMap<>()));
 
         ICommand addItemCommand = new AddItemCommand(getGameEngine(), playerNo, getDisplayHandler(), getInputHandler());
@@ -28,8 +30,8 @@ public class PlayerCommand extends AbstractMenuCommand{
         getCommandContainer().register(2, addPartCommand);
     }
 
-    private void setPlayerNo(int playerNo){
-        if(playerNo != 1 && playerNo != 2){
+    private void setPlayerNo(int playerNo) {
+        if (playerNo != 1 && playerNo != 2) {
             throw new IllegalArgumentException("Illegal player number (should be either 1 or 2)");
         }
         this.playerNo = playerNo;
