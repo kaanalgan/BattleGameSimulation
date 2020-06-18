@@ -25,11 +25,8 @@ public class Plane implements Warcraft {
 
     @Override
     public String toString() {
-
-        String str = type.toString() + " [" + type.getMinPoint() + ", " + type.getMaxPoint()
+        return "Plane: " + type.toString() + " [" + type.getMinPoint() + ", " + type.getMaxPoint()
                 + "] " + " with " + engine.name() + " [" + engine.getMinPoint() + ", " + engine.getMaxPoint() + "]";
-
-        return str;
     }
 
     private void setPlaneType(PlaneType planeType) {

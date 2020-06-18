@@ -22,9 +22,7 @@ public class Ship implements Warcraft {
 
     @Override
     public String toString() {
-        String str = type.toString() + " [" + type.getMinPoint() + ", " + type.getMaxPoint() + "] ";
-
-        return str;
+        return "Ship: " + type.toString() + " [" + type.getMinPoint() + ", " + type.getMaxPoint() + "]";
     }
 
     private void setShipType(ShipType shipType) {
