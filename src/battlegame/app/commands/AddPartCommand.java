@@ -122,7 +122,7 @@ public class AddPartCommand extends AbstractCommand {
                     try {
                         throw new InvalidInputException("Given part number is not in the range!");
                     } catch (InvalidInputException e) {
-                        System.err.println("Invalid part number");
+                        displayHandler.displayErrorMessage("Invalid part number");
                         return;
                     }
             }
