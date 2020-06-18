@@ -76,6 +76,8 @@ public class AddPartCommand extends AbstractCommand {
     @Override
     public void execute() {
 
+        //Refresh loadouts everytime add part is to be used
+        setWarcrafts(getGameEngine().getPlayerLoadout(playerNo));
         if(warcrafts.size() == 0){
             displayHandler.displayWarning("No warcraft to select!");
             return;
