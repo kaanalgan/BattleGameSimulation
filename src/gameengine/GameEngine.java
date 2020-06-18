@@ -1,5 +1,6 @@
 package gameengine;
 
+import exceptions.IllegalPlayerOperationException;
 import warcrafts.addables.Addable;
 import exceptions.UnknownWarcraftTypeException;
 import players.Player;
@@ -24,14 +25,16 @@ public class GameEngine implements IGameEngine {
     }
 
     @Override
-    public boolean addWarcraft(int playerNo, WarcraftType warcraftType) throws UnknownWarcraftTypeException {
+    public boolean addWarcraft(int playerNo, WarcraftType warcraftType)
+            throws UnknownWarcraftTypeException, IllegalPlayerOperationException {
         Player player = players[playerNo];
         Warcraft warcraft = createWarcraft(warcraftType, null);
         return player.addWarcraft(warcraft);
     }
 
     @Override
-    public boolean addWarcraft(int playerNo, WarcraftType warcraftType, Engine engine) throws UnknownWarcraftTypeException {
+    public boolean addWarcraft(int playerNo, WarcraftType warcraftType, Engine engine)
+            throws UnknownWarcraftTypeException, IllegalPlayerOperationException {
         Player player = players[playerNo-1];
         Warcraft warcraft = createWarcraft(warcraftType, engine);
         return player.addWarcraft(warcraft);

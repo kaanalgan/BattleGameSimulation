@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.IllegalPlayerOperationException;
 import exceptions.UnknownWarcraftTypeException;
 import gameengine.IGameEngine;
 import io.IDisplay;
@@ -78,8 +79,8 @@ public class AddItemCommand extends AbstractCommand{
                 }
                 try{
                     getGameEngine().addWarcraft(playerNo, warcraftType, engine);
-                }catch(UnknownWarcraftTypeException e){
-                    e.printStackTrace();
+                }catch(UnknownWarcraftTypeException | IllegalPlayerOperationException e){
+                    displayHandler.displayErrorMessage(e.getMessage());
                 }
                 break;
 
@@ -107,8 +108,8 @@ public class AddItemCommand extends AbstractCommand{
                 newWarcraft = new Ship((ShipType)warcraftType);
                 try {
                     getGameEngine().addWarcraft(playerNo, warcraftType, null);
-                } catch (UnknownWarcraftTypeException e) {
-                    e.printStackTrace();
+                } catch (UnknownWarcraftTypeException | IllegalPlayerOperationException e) {
+                    displayHandler.displayErrorMessage(e.getMessage());
                 }
                 break;
 

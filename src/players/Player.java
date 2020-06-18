@@ -1,5 +1,6 @@
 package players;
 
+import exceptions.IllegalPlayerOperationException;
 import warcrafts.addables.*;
 import warcrafts.plane.Plane;
 import warcrafts.ship.Ship;
@@ -9,6 +10,7 @@ import warcrafts.WarcraftType;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Player {
     private List<Warcraft> warcrafts;
 
@@ -16,7 +18,7 @@ public class Player {
         this.warcrafts = new ArrayList<>();
     }
 
-    public boolean addWarcraft(Warcraft warcraft) {
+    public boolean addWarcraft(Warcraft warcraft) throws IllegalPlayerOperationException {
         if (warcrafts.size() < 5) {
             if (warcraft instanceof Plane) {
                 return addPlane(warcraft);
@@ -30,7 +32,7 @@ public class Player {
                 } else System.out.println("Unknown type");
             } else System.out.println("Unknown type");
         } else {
-            System.out.println("Cannot add more than 5 warcraft");
+            throw new IllegalPlayerOperationException("Cannot add more than 5 warcraft");
         }
         return false;
     }
@@ -56,30 +58,30 @@ public class Player {
         warcrafts = new ArrayList<>();
     }
 
-    private boolean addShip(Warcraft ship) {
+    private boolean addShip(Warcraft ship) throws IllegalPlayerOperationException {
         boolean result = false;
         if (getShipCount() < 3) {
             if (getTypeCount(ship.getType()) < 2) {
                 result = warcrafts.add(ship);
             } else {
-                System.out.println("Cannot add more than 2 same type ship");
+                throw new IllegalPlayerOperationException("Cannot add more than 2 same type ship");
             }
         } else {
-            System.out.println("Cannot add more than 3 ship");
+            throw new IllegalPlayerOperationException("Cannot add more than 3 ship");
         }
         return result;
     }
 
-    private boolean addPlane(Warcraft plane) {
+    private boolean addPlane(Warcraft plane) throws IllegalPlayerOperationException {
         boolean result = false;
         if (getPlaneCount() < 3) {
             if (getTypeCount(plane.getType()) < 2) {
                 result = warcrafts.add(plane);
             } else {
-                System.out.println("Cannot add more than 2 same type plane");
+                throw new IllegalPlayerOperationException("Cannot add more than 2 same type plane");
             }
         } else {
-            System.out.println("Cannot add more than 3 plane");
+            throw new IllegalPlayerOperationException("Cannot add more than 3 plane");
         }
         return result;
     }
