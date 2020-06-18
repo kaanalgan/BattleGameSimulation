@@ -20,6 +20,7 @@ public class AddItemCommand extends AbstractCommand{
 
     public AddItemCommand(IGameEngine gameEngine, int playerNo, IDisplay displayHandler, Input inputHandler) {
         super(gameEngine);
+        setPlayerNo(playerNo);
         this.playerNo = playerNo;
         this.displayHandler = displayHandler;
         this.inputHandler = inputHandler;
@@ -59,6 +60,7 @@ public class AddItemCommand extends AbstractCommand{
                             throw new InvalidInputException("No plane with the given number!");
                         } catch (InvalidInputException e) {
                             displayHandler.displayErrorMessage("Given number does not match to a plane type.");
+                            displayHandler.displayErrorMessage("Warcraft could not be created.");
                             return;
                         }
                 }
@@ -81,10 +83,10 @@ public class AddItemCommand extends AbstractCommand{
                         try {
                             throw new InvalidInputException("Invalid input");
                         } catch (InvalidInputException e) {
-                            displayHandler.displayErrorMessage("Given engine type number is invalid");
+                            displayHandler.displayErrorMessage("Given engine type number is invalid.");
+                            displayHandler.displayErrorMessage("Warcraft could not be created.");
+                            return;
                         }
-                        engine = Engine.PULSEJET;
-                        break;
                 }
                 try{
                     getGameEngine().addWarcraft(playerNo, warcraftType, engine);
@@ -93,6 +95,7 @@ public class AddItemCommand extends AbstractCommand{
                     return;
                 }
             break;
+
             case 2:
                 menuText = "1. Cruiser ship\n2. Destroyer ship\n3. Frigate ship.";
                 displayHandler.displayMenu(menuText, "Choose a ship type: ");
@@ -131,8 +134,8 @@ public class AddItemCommand extends AbstractCommand{
                     throw new InvalidInputException("Invalid warcraft number input.");
                 } catch (InvalidInputException e) {
                     displayHandler.displayErrorMessage("Given warcraft number does not match to a real warcraft type!");
+                    displayHandler.displayErrorMessage("Warcraft could not be created.");
                 }
-                break;
         }
     }
 
