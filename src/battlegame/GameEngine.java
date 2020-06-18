@@ -28,7 +28,7 @@ public class GameEngine implements IGameEngine {
     @Override
     public boolean addWarcraft(int playerNo, WarcraftType warcraftType)
             throws UnknownWarcraftTypeException, IllegalPlayerOperationException {
-        Player player = players[playerNo];
+        Player player = players[playerNo-1];
         Warcraft warcraft = createWarcraft(warcraftType, null);
         return player.addWarcraft(warcraft);
     }
