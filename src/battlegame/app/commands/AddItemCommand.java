@@ -1,6 +1,7 @@
 package battlegame.app.commands;
 
 import exceptions.IllegalPlayerOperationException;
+import exceptions.InvalidInputException;
 import exceptions.UnknownWarcraftTypeException;
 import battlegame.IGameEngine;
 import io.IDisplay;
@@ -54,9 +55,12 @@ public class AddItemCommand extends AbstractCommand{
                         break;
 
                     default:
-                        //TODO: Change this later on.
-                        warcraftType = PlaneType.FIGHTER;
-                        break;
+                        try {
+                            throw new InvalidInputException("No plane with the given number!");
+                        } catch (InvalidInputException e) {
+                            displayHandler.displayErrorMessage("Given number does not match to a plane type.");
+                            return;
+                        }
                 }
 
                 menuText = "1. Pulsejet.\n2. Turbojet.";
@@ -74,6 +78,11 @@ public class AddItemCommand extends AbstractCommand{
                         break;
 
                     default:
+                        try {
+                            throw new InvalidInputException("Invalid input");
+                        } catch (InvalidInputException e) {
+                            displayHandler.displayErrorMessage("Given engine type number is invalid");
+                        }
                         engine = Engine.PULSEJET;
                         break;
                 }
@@ -81,8 +90,8 @@ public class AddItemCommand extends AbstractCommand{
                     getGameEngine().addWarcraft(playerNo, warcraftType, engine);
                 }catch(UnknownWarcraftTypeException | IllegalPlayerOperationException e){
                     displayHandler.displayErrorMessage(e.getMessage());
+                    return;
                 }
-                break;
 
             case 2:
                 menuText = "1. Cruiser ship\n2. Destroyer ship\n3. Frigate ship.";
@@ -102,8 +111,13 @@ public class AddItemCommand extends AbstractCommand{
                         break;
 
                     default:
-                        warcraftType = ShipType.CRUISER;
-                        break;
+                        try {
+                            throw new InvalidInputException("Invalid input");
+                        } catch (InvalidInputException e) {
+                            displayHandler.displayErrorMessage("Given ship type number does not match to a ship type!");
+                            return;
+                        }
+
                 }
                 newWarcraft = new Ship((ShipType)warcraftType);
                 try {
@@ -114,6 +128,11 @@ public class AddItemCommand extends AbstractCommand{
                 break;
 
             default:
+                try {
+                    throw new InvalidInputException("Invalid warcraft number input.");
+                } catch (InvalidInputException e) {
+                    displayHandler.displayErrorMessage("Given warcraft number does not match to a real warcraft type!");
+                }
                 break;
         }
     }

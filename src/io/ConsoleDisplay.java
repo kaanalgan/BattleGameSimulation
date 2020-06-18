@@ -14,7 +14,7 @@ public class ConsoleDisplay implements IDisplay{
         System.out.print(requestMessage);
     }
 
-    //TODO: Change this
+
     @Override
     public void displayLoadouts(String player1Loadout, String player2Loadout) {
 

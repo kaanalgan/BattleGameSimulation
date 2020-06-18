@@ -2,6 +2,7 @@ package battlegame.app.commands;
 
 import battlegame.warcrafts.Addable;
 import battlegame.IGameEngine;
+import exceptions.InvalidInputException;
 import exceptions.PartAlreadyExistsException;
 import exceptions.PartNotCompatibleException;
 import io.IDisplay;
@@ -118,9 +119,12 @@ public class AddPartCommand extends AbstractCommand {
                     break;
 
                 default:
-                    //TODO
-                    partToAdd = Addable.ROCKET;
-                    break;
+                    try {
+                        throw new InvalidInputException("Given part number is not in the range!");
+                    } catch (InvalidInputException e) {
+                        System.err.println("Invalid part number");
+                        return;
+                    }
             }
 
 
@@ -153,13 +157,21 @@ public class AddPartCommand extends AbstractCommand {
                     break;
 
                 default:
-                    //TODO
-                    partToAdd = Addable.ROCKET;
-                    break;
+                    try {
+                        throw new InvalidInputException("Given part number is not in the range!");
+                    } catch (InvalidInputException e) {
+                        displayHandler.displayErrorMessage("Invalid part number");
+                        return;
+                    }
             }
 
         }else{
-            return;
+            try {
+                throw new InvalidInputException("Given warcraft number is not valid!");
+            } catch (InvalidInputException e) {
+                displayHandler.displayErrorMessage("Invalid warcraft type number is given!");
+                return;
+            }
         }
 
 
