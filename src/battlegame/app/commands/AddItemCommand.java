@@ -92,7 +92,7 @@ public class AddItemCommand extends AbstractCommand{
                     displayHandler.displayErrorMessage(e.getMessage());
                     return;
                 }
-
+            break;
             case 2:
                 menuText = "1. Cruiser ship\n2. Destroyer ship\n3. Frigate ship.";
                 displayHandler.displayMenu(menuText, "Choose a ship type: ");
