@@ -17,7 +17,6 @@ public class DisplayLoadoutsCommand extends AbstractCommand{
 
     @Override
     public void execute() {
-        //TODO: Get both players' loadouts and display
         List<Warcraft> player1Loadouts = getGameEngine().getPlayerLoadout(1);
         List<Warcraft> player2Loadouts = getGameEngine().getPlayerLoadout(2);
 
