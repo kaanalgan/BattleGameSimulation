@@ -17,9 +17,11 @@ public class DisplayLoadoutsCommand extends AbstractCommand {
 
     @Override
     public void execute() {
+        /* Get both of the players' loadouts */
         List<Warcraft> player1Loadouts = getGameEngine().getPlayerLoadout(1);
         List<Warcraft> player2Loadouts = getGameEngine().getPlayerLoadout(2);
 
+        /* Put each item into string */
         StringBuilder player1Loadout = new StringBuilder();
         int itemIndex = 1;
 

@@ -6,6 +6,9 @@ import io.Input;
 
 import java.util.HashMap;
 
+/* PlayerOperationsCommand.java
+ * It's a menu command and since it doesn't violate Liskov Substitution Principle, it safely extends the AbstractMenuCommand.
+ * Menu that allows user to select which player to alter. */
 public class PlayerOperationsCommand extends AbstractMenuCommand {
 
     public PlayerOperationsCommand(IGameEngine gameEngine, Input inputHandler, IDisplay displayHandler) {

@@ -26,6 +26,8 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
     }
 
 
+    /* execute() of all menu command classes are the same; It delegates the work to one of its contained commands.
+     * Display the menu, get the input number and delegate to the corresponding command. */
     @Override
     public void execute() {
         int operationId;
@@ -49,26 +51,16 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
         return this.displayHandler;
     }
 
-    private void setDisplayHandler(IDisplay displayHandler) {
-        if (displayHandler == null) {
-            throw new IllegalArgumentException("IDisplay object cannot be null");
-        }
-        this.displayHandler = displayHandler;
-    }
-
     public Input getInputHandler() {
         return this.inputHandler;
     }
 
-    private void setInputHandler(Input inputHandler) {
-        if (inputHandler == null) {
-            throw new IllegalArgumentException("IDisplay object cannot be null");
-        }
-        this.inputHandler = inputHandler;
-    }
 
     protected abstract void initiateCommands();
 
+    /* Initiates the available operations in the menu as string
+     * Common to all those who use the logic of being a menu command.
+     * This method should be used in the constructor of the subclass */
     protected void initiateMenu() {
         initiateCommands();
         StringBuilder menu = new StringBuilder();
@@ -89,6 +81,7 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
         menuText = menu.toString();
     }
 
+    /* Subclasses will delegate the work to its containee commands via the AbstractMenu's getCommandContainer() method. */
     protected CommandContainer getCommandContainer() {
         return commandContainer;
     }
@@ -97,8 +90,24 @@ public abstract class AbstractMenuCommand extends AbstractCommand {
         this.commandContainer = commandContainer;
     }
 
+
     protected String getMenuText() {
         return this.menuText;
+    }
+
+
+    private void setDisplayHandler(IDisplay displayHandler) {
+        if (displayHandler == null) {
+            throw new IllegalArgumentException("IDisplay object cannot be null");
+        }
+        this.displayHandler = displayHandler;
+    }
+
+    private void setInputHandler(Input inputHandler) {
+        if (inputHandler == null) {
+            throw new IllegalArgumentException("IDisplay object cannot be null");
+        }
+        this.inputHandler = inputHandler;
     }
 
 }

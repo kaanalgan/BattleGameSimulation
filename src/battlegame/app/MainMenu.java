@@ -7,6 +7,9 @@ import io.Input;
 
 import java.util.HashMap;
 
+ /* MainMenu.java
+  * Main menu class of the game.
+  * It's a menu command class since it does not violate the Liskov Substituion Principle, it safely extends the AbstractMenuCommand class. */
 public class MainMenu extends AbstractMenuCommand {
 
     public MainMenu(IGameEngine gameEngine, Input inputHandler, IDisplay displayHandler) {

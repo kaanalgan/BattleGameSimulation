@@ -20,8 +20,4 @@ public class ConsoleInput implements Input {
         return scanner.nextInt();
     }
 
-    @Override
-    public void closeInputStream() {
-        scanner.close();
-    }
 }

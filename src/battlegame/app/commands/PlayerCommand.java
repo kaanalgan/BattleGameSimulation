@@ -6,6 +6,10 @@ import io.Input;
 
 import java.util.HashMap;
 
+
+/* PlayerCommand.java
+ * It's a menu command for player specific operations. (Add item to loadout, etc.)
+ */
 public class PlayerCommand extends AbstractMenuCommand {
 
     private int playerNo;

@@ -33,6 +33,147 @@ public class AddPartCommand extends AbstractCommand {
     }
 
 
+
+
+    public String toString() {
+        return "Add part";
+    }
+
+    @Override
+    public void execute() {
+
+        //Refresh loadouts everytime add part is to be used
+        setWarcrafts(getGameEngine().getPlayerLoadout(playerNo));
+
+        if (warcrafts.size() == 0) {
+            displayHandler.displayWarning("No warcraft to select!");
+            return;
+        }
+
+        /* Get the most up-to-date loadout(as string) of the player. */
+        initiateMenuText();
+
+        displayHandler.displayMenu(menuItems, "Choose a warcraft: ");
+        int id = inputHandler.readInt();
+
+        /* No items present in the player's loadout. */
+        if (id - 1 >= warcrafts.size()) {
+            displayHandler.displayErrorMessage("No item with given number");
+            return;
+        }
+
+        Warcraft selectedWarcraft = warcrafts.get(id - 1);
+        int partId;
+        Addable partToAdd;
+
+        /* Selected warcraft to add item is of type Ship */
+        if (selectedWarcraft.getClass() == Ship.class ||
+                selectedWarcraft.getType() instanceof ShipType) {
+
+            /* Addable parts for ship */
+            menuItems = "1. Rocket\n" +
+                    "2. Torpedo\n" +
+                    "3. Cannon";
+
+            displayHandler.displayMenu(menuItems, "Choose a part to add: ");
+            partId = inputHandler.readInt();
+
+            switch (partId) {
+
+                /* Addable is of type Rocket */
+                case 1:
+                    partToAdd = Addable.ROCKET;
+                    break;
+
+                /* Addable is of type Torpedo */
+                case 2:
+                    partToAdd = Addable.TORPEDO;
+                    break;
+
+                /* Addable is of type Cannon */
+                case 3:
+                    partToAdd = Addable.CANNON;
+                    break;
+
+                /* Addable type is not recognized */
+                default:
+                    try {
+                        throw new InvalidInputException("Given part number is not in the range!");
+                    } catch (InvalidInputException e) {
+                        //Display error message and go back.
+                        displayHandler.displayErrorMessage("Invalid part number");
+                        return;
+                    }
+            }
+
+        /* Selected warcraft to add item is of type Plane */
+        } else if (selectedWarcraft.getClass() == Plane.class ||
+                selectedWarcraft.getType() instanceof PlaneType) {
+
+            /* Addable parts for plane */
+            menuItems = "1. Rocket\n" +
+                    "2. Missile\n" +
+                    "3. Machine gun\n" +
+                    "4. Bomb";
+
+            displayHandler.displayMenu(menuItems, "Choose a part to add: ");
+            partId = inputHandler.readInt();
+
+            switch (partId) {
+
+                /* Addable is of type Rocket */
+                case 1:
+                    partToAdd = Addable.ROCKET;
+                    break;
+
+                /* Addable is of type Missile */
+                case 2:
+                    partToAdd = Addable.MISSILE;
+                    break;
+
+                /* Addable is of type Machine gun */
+                case 3:
+                    partToAdd = Addable.MACHINE_GUN;
+                    break;
+
+                /* Addable is of type Bomb */
+                case 4:
+                    partToAdd = Addable.BOMB;
+                    break;
+
+                /* Addable type is not recognized */
+                default:
+                    try {
+                        throw new InvalidInputException("Given part number is not in the range!");
+                    } catch (InvalidInputException e) {
+                        //Display error and go back
+                        displayHandler.displayErrorMessage("Invalid part number");
+                        return;
+                    }
+            }
+
+        /* Selected warcraft type is not recognized. */
+        } else {
+            try {
+                throw new InvalidInputException("Given warcraft number is not valid!");
+            } catch (InvalidInputException e) {
+                //Display error message and go back
+                displayHandler.displayErrorMessage("Invalid warcraft type number is given!");
+                return;
+            }
+        }
+
+
+        try {
+            getGameEngine().addPart(playerNo, id, partToAdd);
+        } catch (PartNotCompatibleException | PartAlreadyExistsException e) {
+            /* Error due to some violation of rules */
+            displayHandler.displayErrorMessage(e.getMessage());
+        }
+
+    }
+
+
     private void initiateMenuText() {
         StringBuilder warcrafts = new StringBuilder();
         int menuItemIndex = 1;
@@ -69,122 +210,5 @@ public class AddPartCommand extends AbstractCommand {
             throw new IllegalArgumentException("Given player number must be greater than 0");
         }
         this.playerNo = playerNo;
-    }
-
-    public String toString() {
-        return "Add part";
-    }
-
-    @Override
-    public void execute() {
-
-        //Refresh loadouts everytime add part is to be used
-        setWarcrafts(getGameEngine().getPlayerLoadout(playerNo));
-
-        if (warcrafts.size() == 0) {
-            displayHandler.displayWarning("No warcraft to select!");
-            return;
-        }
-
-        /* Get the most up-to-date loadout of the player. */
-        initiateMenuText();
-
-        displayHandler.displayMenu(menuItems, "Choose a warcraft: ");
-        int id = inputHandler.readInt();
-
-        if (id - 1 >= warcrafts.size()) {
-            displayHandler.displayErrorMessage("No item with given number");
-            return;
-        }
-
-        Warcraft selectedWarcraft = warcrafts.get(id - 1);
-        System.out.println("selected warcraft : " + selectedWarcraft.getType());
-        int partId;
-        Addable partToAdd;
-
-        if (selectedWarcraft.getClass() == Ship.class ||
-                selectedWarcraft.getType() instanceof ShipType) {
-            menuItems = "1. Rocket\n" +
-                    "2. Torpedo\n" +
-                    "3. Cannon";
-
-            displayHandler.displayMenu(menuItems, "Choose a part to add: ");
-            partId = inputHandler.readInt();
-            switch (partId) {
-                case 1:
-                    partToAdd = Addable.ROCKET;
-                    break;
-
-                case 2:
-                    partToAdd = Addable.TORPEDO;
-                    break;
-
-                case 3:
-                    partToAdd = Addable.CANNON;
-                    break;
-
-                default:
-                    try {
-                        throw new InvalidInputException("Given part number is not in the range!");
-                    } catch (InvalidInputException e) {
-                        displayHandler.displayErrorMessage("Invalid part number");
-                        return;
-                    }
-            }
-
-
-        } else if (selectedWarcraft.getClass() == Plane.class ||
-                selectedWarcraft.getType() instanceof PlaneType) {
-
-            menuItems = "1. Rocket\n" +
-                    "2. Missile\n" +
-                    "3. Machine gun\n" +
-                    "4. Bomb";
-
-            displayHandler.displayMenu(menuItems, "Choose a part to add: ");
-            partId = inputHandler.readInt();
-
-            switch (partId) {
-                case 1:
-                    partToAdd = Addable.ROCKET;
-                    break;
-
-                case 2:
-                    partToAdd = Addable.MISSILE;
-                    break;
-
-                case 3:
-                    partToAdd = Addable.MACHINE_GUN;
-                    break;
-
-                case 4:
-                    partToAdd = Addable.BOMB;
-                    break;
-
-                default:
-                    try {
-                        throw new InvalidInputException("Given part number is not in the range!");
-                    } catch (InvalidInputException e) {
-                        displayHandler.displayErrorMessage("Invalid part number");
-                        return;
-                    }
-            }
-
-        } else {
-            try {
-                throw new InvalidInputException("Given warcraft number is not valid!");
-            } catch (InvalidInputException e) {
-                displayHandler.displayErrorMessage("Invalid warcraft type number is given!");
-                return;
-            }
-        }
-
-
-        try {
-            getGameEngine().addPart(playerNo, id, partToAdd);
-        } catch (PartNotCompatibleException | PartAlreadyExistsException e) {
-            displayHandler.displayErrorMessage(e.getMessage());
-        }
-
     }
 }
