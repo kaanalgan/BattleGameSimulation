@@ -2,6 +2,7 @@ package battlegame.app.commands;
 
 import battlegame.warcrafts.Addable;
 import battlegame.IGameEngine;
+import exceptions.PartNotCompatibleException;
 import io.IDisplay;
 import io.Input;
 import battlegame.warcrafts.*;
@@ -160,11 +161,12 @@ public class AddPartCommand extends AbstractCommand {
             return;
         }
 
-        System.out.println("part to add: " + partToAdd);
-        System.out.println("warcraft no: " + (id-1));
 
-
-        getGameEngine().addPart(playerNo, id, partToAdd);
+        try {
+            getGameEngine().addPart(playerNo, id, partToAdd);
+        } catch (PartNotCompatibleException e) {
+            displayHandler.displayErrorMessage(e.getMessage());
+        }
 
     }
 }

@@ -4,6 +4,7 @@ import battlegame.warcrafts.*;
 import exceptions.IllegalPlayerOperationException;
 import battlegame.warcrafts.plane.Plane;
 import battlegame.warcrafts.ship.Ship;
+import exceptions.PartNotCompatibleException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class Player {
         return false;
     }
 
-    public boolean addPartToWarcraft(int warcraftNo, Addable addable) {
+    public boolean addPartToWarcraft(int warcraftNo, Addable addable) throws PartNotCompatibleException {
         Warcraft warcraft = warcrafts.get(warcraftNo);
 
         warcraft = new PartDecorator(warcraft, addable);

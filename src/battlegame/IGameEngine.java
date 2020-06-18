@@ -3,6 +3,7 @@ package battlegame;
 
 import exceptions.IllegalPlayerOperationException;
 import battlegame.warcrafts.Addable;
+import exceptions.PartNotCompatibleException;
 import exceptions.UnknownWarcraftTypeException;
 import battlegame.utilities.GameReport;
 import battlegame.warcrafts.plane.Engine;
@@ -17,7 +18,7 @@ public interface IGameEngine {
 
     public boolean addWarcraft(int playerNo, WarcraftType warcraftType, Engine engine) throws UnknownWarcraftTypeException, IllegalPlayerOperationException;
 
-    public boolean addPart(int playerNo, int warcraftNo, Addable part);
+    public boolean addPart(int playerNo, int warcraftNo, Addable part) throws PartNotCompatibleException;
 
     public List<Warcraft> getPlayerLoadout(int playerNo);
 
